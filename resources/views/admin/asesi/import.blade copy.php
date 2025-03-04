@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,3 +106,10 @@
     </form>
 </body>
 </html>
+
+{{-- @foreach ($dataError as $error)
+    <div style="margin-top:15px; margin-left:20px;">
+        {{ $loop->iteration }} | {{ $error['message'] }} | Baris ke: {{ $error['row_number'] }} | Nama: {{ $error['nama'] }} | {{ $error['value'] }}    
+    </div>
+    <hr>
+    @endforeach --}}

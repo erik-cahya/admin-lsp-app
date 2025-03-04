@@ -11,6 +11,7 @@ use App\Http\Controllers\Developer\ExcelController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\QRCode\QRCodeController;
+use App\Http\Controllers\Surat\SuratPermohonanBlankoController;
 use App\Http\Controllers\Surat\SuratTugasAsesorController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,9 @@ Route::middleware(['guest'])->group(function () {
 
 
 
-Route::get('/import', [ExcelController::class, 'index']);
+// Route::get('/import', [ExcelController::class, 'index']);
 
-Route::post('/import', [AsesiController::class, 'importExcel'])->name('import');
+// Route::post('/import', [AsesiController::class, 'importExcel'])->name('import');
 
 
 
@@ -75,11 +76,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('get_data_tuk/{id}', [SuratTugasAsesorController::class, 'get_data_tuk'])->name('get_data_tuk');
 
-    // ############################################################ Asesi
-    Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
-    Route::get('/asesi/import', [AsesiController::class, 'importExcel'])->name('asesiImport');
-    Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
-    Route::delete('/asesiDeleted/{id}', [AsesiController::class, 'asesiDeleted'])->name('asesiDeleted');
 
 
     // Route::get('tukAdd', [AsesiController::class, 'tukAdd'])->name('tukAdd');
@@ -102,4 +98,19 @@ Route::middleware(['auth'])->group(function () {
 
     // ############################################################ Skema
     Route::resource('/skema', SkemaController::class)->except('show','edit', 'create');
+
+     // ############################################################ Asesi
+     Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
+     Route::get('/asesi/create', [AsesiController::class, 'createDataAsesi'])->name('asesiAdd');
+     Route::post('/asesi/store', [AsesiController::class, 'importExcel'])->name('asesiAdded');
+
+
+     Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
+     Route::delete('/asesiDeleted/{id}', [AsesiController::class, 'asesiDeleted'])->name('asesiDeleted');
+
+     // ############################################################ Blanko
+     Route::get('/blanko/surat-permohonan', [SuratPermohonanBlankoController::class, 'index'] );
+
+
 });
+

@@ -63,15 +63,13 @@
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <label class="form-label">Upload File Excel</label>
-
-                        <form action="{{ route('asesiAdded') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="file" id="file" class="form-control" required>
-
-                            <button type="submit" class="btn btn-sm btn-primary mt-2 d-block">Import Data</button>
-                        </form>
-
+                        <label class="form-label">Judul Skema Data</label>
+                        <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
+                            <option data-icon="feather-user" selected readonly disabled>Pilih Data Skema...</option>
+                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2024 | 300</option>
+                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2023 | 156</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-primary mt-2">Search Data</button>
                     </div>
                 </div>
             </div>
@@ -80,7 +78,7 @@
         <div class="row">
 
             <div class="col-12">
-                <div class="card" style="font-size: 12px">
+                <div class="card">
                     <div class="card-header">
                         <h4 class="header-title">Data Error <span class="noti-icon-badge badge text-bg-pink">{{ $countDataError }}</span></h4>
                         <p class="text-muted mb-0">
@@ -100,9 +98,45 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>AC336 508 2157</td>
+                                        <td class="table-user">
+                                            <img src="assets/images/users/avatar-6.jpg" alt="table-user" class="me-2 rounded-circle">
+                                            Risa D. Pearson
+                                        </td>
                                         <td>AC336 508 2157</td>
                                         <td>July 24, 1950</td>
+                                        <td class="text-center">
+                                            <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i class="ri-delete-bin-2-line"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-user">
+                                            <img src="assets/images/users/avatar-7.jpg" alt="table-user" class="me-2 rounded-circle">
+                                            Ann C. Thompson
+                                        </td>
+                                        <td>SB646 473 2057</td>
+                                        <td>January 25, 1959</td>
+                                        <td class="text-center">
+                                            <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i class="ri-delete-bin-2-line"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-user">
+                                            <img src="assets/images/users/avatar-8.jpg" alt="table-user" class="me-2 rounded-circle">
+                                            Paul J. Friend
+                                        </td>
+                                        <td>DL281 308 0793</td>
+                                        <td>September 1, 1939</td>
+                                        <td class="text-center">
+                                            <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i class="ri-delete-bin-2-line"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-user">
+                                            <img src="assets/images/users/avatar-9.jpg" alt="table-user" class="me-2 rounded-circle">
+                                            Sean C. Nguyen
+                                        </td>
+                                        <td>CA269 714 6825</td>
+                                        <td>February 5, 1994</td>
                                         <td class="text-center">
                                             <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i class="ri-delete-bin-2-line"></i></a>
                                         </td>

@@ -24,7 +24,7 @@
     <style>
         .hover-menu{
             display: none;
-        }
+            }
 
         .hoverMenuContainer:hover > .hover-menu{
             display: block;
@@ -82,9 +82,10 @@
                     <div class="card-header">
                         <h4 class="header-title">{{ $titlePage }}</h4>
                         <p class="text-muted mb-0">
-                            Anda bisa menambahkan dan mendownload {{ $titlePage }}, foto, serta tanda tangan.
+                            Anda Dapat Melakukan Edit atau Menghapus {{ $titlePage }} Berikut 
                         </p>
-                        <a href="{{ route('asesiCompact') }}">Compact Mode</a>
+                        <a href="{{ route('asesiCompact') }}">Compact Mode</a> | 
+                        <a href="#">Download Template Excel</a>
                     </div>
                     <div class="card-body">
                         <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">

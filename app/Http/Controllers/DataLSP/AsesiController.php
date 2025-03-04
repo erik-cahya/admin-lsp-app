@@ -38,8 +38,14 @@ class AsesiController extends Controller
         return view('admin.asesi.index', $this->data);
     }
 
+    public function createDataAsesi(){
+        $data['countDataError'] = 0;
+        return view('admin.asesi.import', $data);
+    }
+
     public function importExcel(Request $request)
     {
+        // dd('import asesi');
         $request->validate([
             'file' => 'required|mimes:xlsx,csv',
         ]);
@@ -76,10 +82,15 @@ class AsesiController extends Controller
 
         // Jika ada baris tidak valid, tampilkan semuanya
         if (!empty($invalidRows)) {
-            echo '<h2>Format data error</h2>';
-            foreach ($invalidRows as $error) {
-                echo '<div style="margin-top:15px; margin-left:20px;">' . $error['row_number'].'. ' . $error['message'] . ' | Baris ke: ' . $error['row_number'] . ' | Nama: ' . $error['nama'] . ' | ' . $error['value'] . "</div><hr>";
-            }
+            // foreach ($invalidRows as $error) {
+            //     echo '<div style="margin-top:15px; margin-left:20px;">' . $error['row_number'] . ' . ' . $error['message'] . ' | Baris ke: ' . $error['row_number'] . ' | Nama: ' . $error['nama'] . ' | ' . $error['value'] . "</div><hr>";
+            // }
+
+            // dd(count($invalidRows));
+
+            $data["dataError"] = $invalidRows;
+            $data['countDataError'] = count($invalidRows);
+            return view('admin.asesi.error', $data);
             exit; // Hentikan proses setelah menampilkan error
         }
 
@@ -151,6 +162,7 @@ class AsesiController extends Controller
             }
         }
 
+        dd('data berhasil diimport');
         return back()->with([
             'success' => 'Data berhasil diimpor!',
             'duplicates' => $duplicates,

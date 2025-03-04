@@ -145,7 +145,7 @@
                     </ul>
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/import">Import Data Asesi</a>
+                            <a href="{{ route('asesiAdd') }}">Import Data Asesi</a>
                         </li>
                     </ul>
                 </div>
@@ -207,8 +207,7 @@
                     <ul class="side-nav-second-level">
                         <li>
                             <a href="/asesor">
-                                <span class="badge bg-success float-end">{{ App\Models\AsesorModel::count() }}</span>
-                                List Asesor
+                                Surat Permohonan
                             </a>
                         </li>
                     </ul>
