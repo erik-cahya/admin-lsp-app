@@ -101,15 +101,17 @@ Route::middleware(['auth'])->group(function () {
 
      // ############################################################ Asesi
      Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
-     Route::get('/asesi/create', [AsesiController::class, 'createDataAsesi'])->name('asesiAdd');
-     Route::post('/asesi/store', [AsesiController::class, 'importExcel'])->name('asesiAdded');
+     Route::get('/asesi/import', [AsesiController::class, 'importDataAsesi'])->name('asesiAdd');
+     Route::post('/asesi/import', [AsesiController::class, 'importExcel'])->name('asesiAdded');
 
 
      Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
      Route::delete('/asesiDeleted/{id}', [AsesiController::class, 'asesiDeleted'])->name('asesiDeleted');
 
      // ############################################################ Blanko
-     Route::get('/blanko/surat-permohonan', [SuratPermohonanBlankoController::class, 'index'] );
+     Route::get('/suratPermohonanBlanko', [SuratPermohonanBlankoController::class, 'index'] )->name('surat-permohonan-blanko.view');
+     Route::get('/suratPermohonanBlanko/create', [SuratPermohonanBlankoController::class, 'create'] )->name('surat-permohonan-blanko.create');
+     Route::post('/suratPermohonanBlanko/store', [SuratPermohonanBlankoController::class, 'store'] )->name('surat-permohonan-blanko.store');
 
 
 });

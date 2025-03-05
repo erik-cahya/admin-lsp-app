@@ -60,65 +60,60 @@
 
 
         <div class="row">
-            <div class="col-lg-6">
+            <form action="{{ route('asesiAdded') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="card">
                     <div class="card-body">
-                        <label class="form-label">Upload File Excel</label>
+                        <div class="row">
 
-                        <form action="{{ route('asesiAdded') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="file" id="file" class="form-control" required>
-
-                            <button type="submit" class="btn btn-sm btn-primary mt-2 d-block">Import Data</button>
-                        </form>
-
+                        <div class="col-lg-6">
+                            <label class="form-label">Surat Permohonan Pengajuan Blanko</label>
+                            <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
+                                <option selected readonly disabled>Pilih Nomor Surat Pengajuan...</option>
+                                <option value="Badung">20/ST-LSP-EHI/2024</option>
+                                <option value="Badung">22/ST-LSP-EHI/2024</option>
+                                <option value="Badung">56/ST-LSP-EHI/2024</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-label">Upload File Excel</label>
+                                <input type="file" name="file" id="file" class="form-control" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary mt-2 d-block">Import Data</button>
                     </div>
-                </div>
-            </div>
+                    </div>        
+            </form>
         </div>
 
+
+        @if (isset($countDataError) && isset($dataError))
         <div class="row">
 
             <div class="col-12">
                 <div class="card" style="font-size: 12px">
                     <div class="card-header">
-                        <h4 class="header-title">Data Error <span class="noti-icon-badge badge text-bg-pink">{{ $countDataError }}</span></h4>
+                        <h4 class="header-title">{{ $status == 'duplicate' ? 'Data Duplicate' : 'Data Error' }} <span class="noti-icon-badge badge {{ $status == 'duplicate' ? 'text-bg-warning' : 'text-bg-pink' }}">{{ $countDataError }}</span></h4>
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload, foto, serta tanda tangan.
                         </p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive-sm">
-                            <table class="table table-bordered border-primary table-centered mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>User</th>
-                                        <th>Account No.</th>
-                                        <th>Balance</th>
-                                        <th class="text-center">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>AC336 508 2157</td>
-                                        <td>AC336 508 2157</td>
-                                        <td>July 24, 1950</td>
-                                        <td class="text-center">
-                                            <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i class="ri-delete-bin-2-line"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                           @if ($status == 'error')
+                                @include('admin.asesi.error.table-data-error')
+                            @elseif($status == 'duplicate')
+                                @include('admin.asesi.error.table-data-duplicate')
+                           @endif
                         </div>
 
                     </div> <!-- end card body-->
                 </div> <!-- end card -->
             </div><!-- end col-->
         </div> <!-- end row-->
-
+        @endif
     </div>
     <!-- container -->
-
 </div>
 
 @endsection

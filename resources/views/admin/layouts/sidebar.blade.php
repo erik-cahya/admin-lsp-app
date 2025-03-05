@@ -206,14 +206,14 @@
                 <div class="collapse" id="pengajuanBlanko">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/asesor">
-                                Surat Permohonan
+                            <a href="{{ route('surat-permohonan-blanko.view') }}">
+                                Surat Permohonan Blanko
                             </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/asesor/create">Create Data Asesor</a>
+                            <a href="{{ route('surat-permohonan-blanko.create') }}">Create Surat Permohonan</a>
                         </li>
                     </ul>
                 </div>

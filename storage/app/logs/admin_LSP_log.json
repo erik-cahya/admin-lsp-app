@@ -218,5 +218,15 @@
         "id_user": 320442414969499246,
         "name": "Admin LSP",
         "timestamps": "04-Mar-2025 15:21:45"
+    },
+    {
+        "ip_address": "127.0.0.1",
+        "country": null,
+        "regionName": null,
+        "city": null,
+        "isp": null,
+        "id_user": 320442414969499246,
+        "name": "Admin LSP",
+        "timestamps": "05-Mar-2025 10:53:24"
     }
 ]

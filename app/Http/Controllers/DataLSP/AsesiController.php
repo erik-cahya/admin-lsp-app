@@ -38,7 +38,7 @@ class AsesiController extends Controller
         return view('admin.asesi.index', $this->data);
     }
 
-    public function createDataAsesi(){
+    public function importDataAsesi(){
         $data['countDataError'] = 0;
         return view('admin.asesi.import', $data);
     }
@@ -60,7 +60,7 @@ class AsesiController extends Controller
             // Validasi tanggal harus angka dan tidak null | kolom [6] excel
             if (!isset($row[6]) || !is_numeric($row[6])) {
                 $invalidRows[] = [
-                    'message' => 'Data Tanggal Excel Error',
+                    'message' => 'Tanggal Excel tdk Sesuai',
                     'row_number' => $key + 1,
                     'nama' => $row[1],
                     'value' => 'Tanggal: ' . (isset($row[6]) ? $row[6] : "NULL")
@@ -80,7 +80,7 @@ class AsesiController extends Controller
             }
         }
 
-        // Jika ada baris tidak valid, tampilkan semuanya
+        // Jika ada baris tidak valid / data error, tampilkan semuanya
         if (!empty($invalidRows)) {
             // foreach ($invalidRows as $error) {
             //     echo '<div style="margin-top:15px; margin-left:20px;">' . $error['row_number'] . ' . ' . $error['message'] . ' | Baris ke: ' . $error['row_number'] . ' | Nama: ' . $error['nama'] . ' | ' . $error['value'] . "</div><hr>";
@@ -88,10 +88,13 @@ class AsesiController extends Controller
 
             // dd(count($invalidRows));
 
-            $data["dataError"] = $invalidRows;
-            $data['countDataError'] = count($invalidRows);
-            return view('admin.asesi.error', $data);
-            exit; // Hentikan proses setelah menampilkan error
+            $this->data["dataError"] = $invalidRows;
+            $this->data['countDataError'] = count($invalidRows);
+            $this->data['status'] = 'error';
+
+            return view('admin.asesi.import', $this->data);
+
+            exit; // stop proses 
         }
 
         // Jika semua data valid, lanjutkan proses
@@ -162,11 +165,22 @@ class AsesiController extends Controller
             }
         }
 
-        dd('data berhasil diimport');
-        return back()->with([
+        // dd('data berhasil diimport');
+        // dd($duplicates);
+        // return back()->with([
+        //     'success' => 'Data berhasil diimpor!',
+        //     'duplicates' => $duplicates,
+        // ]);
+
+        $this->data = [
             'success' => 'Data berhasil diimpor!',
-            'duplicates' => $duplicates,
-        ]);
+            'dataError' => $duplicates,
+            'countDataError' => count($duplicates),
+            'status' => 'duplicate'
+
+        ];
+        return view('admin.asesi.import', $this->data);
+        // return redirect('/asesi/create')->with('data', $data);
     }
 
 

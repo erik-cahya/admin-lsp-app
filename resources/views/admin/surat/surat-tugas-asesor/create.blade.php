@@ -74,7 +74,11 @@
                                                     <input type="hidden" class="form-control" id="nomor_surat" oninput="capitalizeText()" name="nomor_surat" value="{{ $nomor_surat }}">
                                                 </div>
                                                 @error('nomor_surat')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                    <style> .border-red{border-color: #d03f3f} </style>
+
+                                                    <div class="invalid-tooltip d-block position-static mt-1">
+                                                        {{ $message }}
+                                                    </div>
                                                 @enderror
 
                                             </div>
@@ -89,7 +93,11 @@
                                                 </select>
 
                                                 @error('skema')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                    <style> .border-red{border-color: #d03f3f} </style>
+
+                                                    <div class="invalid-tooltip d-block position-static mt-1">
+                                                        {{ $message }}
+                                                    </div>
                                                 @enderror
                                             </div>
                                         </div>
@@ -107,7 +115,11 @@
 
                                                 
                                                 @error('nama_asesor')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                    <style> .border-red{border-color: #d03f3f} </style>
+
+                                                    <div class="invalid-tooltip d-block position-static mt-1">
+                                                        {{ $message }}
+                                                    </div>
                                                 @enderror
                                             </div>
 
@@ -128,7 +140,11 @@
                                                     @endforeach
                                                 </select>
                                                 @error('nama_tuk')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                    <style> .border-red{border-color: #d03f3f} </style>
+
+                                                    <div class="invalid-tooltip d-block position-static mt-1">
+                                                        {{ $message }}
+                                                    </div>
                                                 @enderror
                                             </div>
 
@@ -142,20 +158,28 @@
                                             <div class="col-lg-6 mb-4">
                                                 <div class="mb-3 position-relative" id="tanggalUji">
                                                     <label class="form-label">Tanggal Uji</label>
-                                                    <input type="text" class="form-control" placeholder="Select Date" data-provide="datepicker" data-date-format="dd-MM-yyyy" name="tanggal_uji" data-date-container="#tanggalUji" autocomplete="off">
+                                                    <input type="text" class="form-control" placeholder="Select Date" data-provide="datepicker" data-date-format="dd-MM-yyyy" name="tanggal_uji" data-date-container="#tanggalUji" autocomplete="off" required value="{{ old('tanggal_uji') }}">
                                                 </div>
                                                 @error('tanggal_uji')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                    <style> .border-red{border-color: #d03f3f} </style>
+
+                                                    <div class="invalid-tooltip d-block position-static mt-1">
+                                                        {{ $message }}
+                                                    </div>
                                                 @enderror
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
                                                 <div class="mb-3 position-relative" id="tanggalSurat">
                                                     <label class="form-label">Tanggal Surat</label>
-                                                    <input type="text" class="form-control" placeholder="Select Date" data-provide="datepicker" data-date-format="dd-MM-yyyy" name="tanggal_surat" data-date-container="#tanggalSurat" autocomplete="off">
+                                                    <input type="text" class="form-control" placeholder="Select Date" data-provide="datepicker" data-date-format="dd-MM-yyyy" name="tanggal_surat" data-date-container="#tanggalSurat" autocomplete="off" required value="{{ old('tanggal_surat') }}">
                                                 </div>
                                                 @error('tanggal_surat')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                    <style> .border-red{border-color: #d03f3f} </style>
+
+                                                    <div class="invalid-tooltip d-block position-static mt-1">
+                                                        {{ $message }}
+                                                    </div>
                                                 @enderror
                                             </div>
                                         </div>
