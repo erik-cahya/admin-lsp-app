@@ -10,14 +10,10 @@
 
     <!-- Theme Config Js -->
     <script src="{{ asset('velonic_admin') }}/assets/js/config.js"></script>
-
     <!-- Select2 css -->
     <link href="{{ asset('velonic_admin') }}/assets/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-
-
     <!-- App css -->
     <link href="{{ asset('velonic_admin') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
-
     <!-- Icons css -->
     <link href="{{ asset('velonic_admin') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
@@ -63,25 +59,36 @@
             <form action="{{ route('asesiAdded') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-header">
                         <div class="row">
-
-                        <div class="col-lg-6">
-                            <label class="form-label">Surat Permohonan Pengajuan Blanko</label>
-                            <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
-                                <option selected readonly disabled>Pilih Nomor Surat Pengajuan...</option>
-                                <option value="Badung">20/ST-LSP-EHI/2024</option>
-                                <option value="Badung">22/ST-LSP-EHI/2024</option>
-                                <option value="Badung">56/ST-LSP-EHI/2024</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="form-label">Upload File Excel</label>
-                                <input type="file" name="file" id="file" class="form-control" required>
+                            <div class="col-lg-6">
+                                <h4 class="header-title">Import Data Asesi</h4>
+                            </div>
+                            <div class="col-lg-6 d-flex justify-content-end">
+                                <a href="#" class="btn btn-sm btn-outline-primary">
+                                    <i class="ri-download-line"></i>
+                                </a>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary mt-2 d-block">Import Data</button>
                     </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label class="form-label">Surat Permohonan Pengajuan Blanko</label>
+                                <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
+                                    <option selected readonly disabled>Pilih Nomor Surat Pengajuan...</option>
+                                    <option value="Badung">20/ST-LSP-EHI/2024</option>
+                                    <option value="Badung">22/ST-LSP-EHI/2024</option>
+                                    <option value="Badung">56/ST-LSP-EHI/2024</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="form-label">Upload File Excel</label>
+                                    <input type="file" name="file" id="file" class="form-control" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-sm btn-primary mt-2 d-block">Import Data</button>
+                        </div>
                     </div>        
             </form>
         </div>
