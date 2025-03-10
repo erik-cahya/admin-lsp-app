@@ -13,3 +13,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+
+admin_LSP_log.json
+/storage/app/logs/*.json
