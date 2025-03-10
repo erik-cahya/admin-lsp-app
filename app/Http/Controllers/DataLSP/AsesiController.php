@@ -5,12 +5,11 @@ namespace App\Http\Controllers\DataLSP;
 use App\Http\Controllers\Controller;
 use App\Models\AsesiModel;
 use App\Models\AsesorModel;
-use Faker\Core\Uuid;
+use App\Models\SuratPermohonanBlankoModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
-use Ramsey\Uuid\Rfc4122\UuidV1;
 
 class AsesiController extends Controller
 {
@@ -34,18 +33,23 @@ class AsesiController extends Controller
     {
         $this->data['dataAsesor'] = AsesorModel::get();
         $this->data['dataAsesi'] = AsesiModel::get();
+        $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
 
         return view('admin.asesi.index', $this->data);
     }
 
+    // Page Import Data
     public function importDataAsesi(){
-        $data['countDataError'] = 0;
-        return view('admin.asesi.import', $data);
+        $this->data['countDataError'] = 0;
+        $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
+        return view('admin.asesi.import', $this->data);
     }
 
+
+    // Import Excel
     public function importExcel(Request $request)
     {
-        // dd('import asesi');
+        // dd($request->all());
         $request->validate([
             'file' => 'required|mimes:xlsx,csv',
         ]);
@@ -76,6 +80,7 @@ class AsesiController extends Controller
                     'value' => 'NIK: ' . $row[4] . ' (Jumlah Digit: ' . $length . ')'
                 ];
             }
+
         }
 
         // Jika ada baris tidak valid / data error, tampilkan semuanya
@@ -89,6 +94,7 @@ class AsesiController extends Controller
             $this->data["dataError"] = $invalidRows;
             $this->data['countDataError'] = count($invalidRows);
             $this->data['status'] = 'error';
+            $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
 
             return view('admin.asesi.import', $this->data);
 
@@ -145,6 +151,7 @@ class AsesiController extends Controller
             } else {
                 DB::table('asesi')->insert([
                     'id' => Str::uuid(),
+                    'id_surat_permohonan' => $request->id_surat_permohonan,
                     'nama_lengkap' => $nama_lengkap,
                     'nama_tempat_bekerja' => $nama_tempat_bekerja,
                     'alamat' => $alamat,
@@ -177,8 +184,13 @@ class AsesiController extends Controller
             'status' => 'duplicate'
 
         ];
-        return view('admin.asesi.import', $this->data);
-        // return redirect('/asesi/create')->with('data', $data);
+        $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
+
+        if($this->data['countDataError'] == 0){
+            return redirect('/asesi');
+        }else{
+            return view('admin.asesi.import', $this->data);
+        }
     }
 
 

@@ -53,8 +53,6 @@
             </div>
         </div>
         <!-- end page title -->
-
-
         <div class="row">
             <form action="{{ route('asesiAdded') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -75,11 +73,12 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label class="form-label">Surat Permohonan Pengajuan Blanko</label>
-                                <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
+                                <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="id_surat_permohonan" name="id_surat_permohonan" >
                                     <option selected readonly disabled>Pilih Nomor Surat Pengajuan...</option>
-                                    <option value="Badung">20/ST-LSP-EHI/2024</option>
-                                    <option value="Badung">22/ST-LSP-EHI/2024</option>
-                                    <option value="Badung">56/ST-LSP-EHI/2024</option>
+                                    @foreach ($suratPermohonan as $permohonanBlanko)
+                                        <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}">{{ $permohonanBlanko->nomor_surat }}</option>
+                                    @endforeach    
+                                    
                                 </select>
                             </div>
                             <div class="col-lg-6">

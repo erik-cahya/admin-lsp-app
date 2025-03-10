@@ -63,11 +63,12 @@
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <label class="form-label">Judul Skema Data</label>
+                        <label class="form-label">Nomor Surat Permohonan</label>
                         <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
-                            <option data-icon="feather-user" selected readonly disabled>Pilih Data Skema...</option>
-                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2024 | 300</option>
-                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2023 | 156</option>
+                            <option data-icon="feather-user" selected readonly disabled>Pilih Surat Permohonan...</option>
+                                @foreach ($suratPermohonan as $permohonanBlanko)
+                                    <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}">{{ $permohonanBlanko->nomor_surat }} | 300</option>
+                                @endforeach
                         </select>
                         <button type="submit" class="btn btn-sm btn-primary mt-2">Search Data</button>
                     </div>
