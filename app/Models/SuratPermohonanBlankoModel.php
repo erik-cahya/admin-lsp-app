@@ -29,4 +29,10 @@ class SuratPermohonanBlankoModel extends Model
     protected $casts = [
         'id' => 'string',
     ];
+
+    
+    public function asesi()
+    {
+        return $this->hasMany(AsesiModel::class, 'id_surat_permohonan', 'id');
+    }
 }

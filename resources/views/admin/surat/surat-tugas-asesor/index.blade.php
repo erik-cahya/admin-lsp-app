@@ -47,7 +47,9 @@
                         <p class="text-muted mb-0">
                             Anda bisa mendownload surat dengan format .pdf ataupun .doc
                         </p>
-                    <a href="{{ route('surat-tugas-asesor-compact') }}">Compact Mode</a>
+                    <a href="{{ route('surat-tugas-asesor-compact') }}" class="btn btn-sm btn-dark mt-2">Compact Mode</a>
+                    <a href="{{ route('surat-tugas-asesor.create') }}" class="btn btn-sm btn-dark mt-2">Create Surat Tugas</a>
+
 
                     </div>
                     <div class="card-body">

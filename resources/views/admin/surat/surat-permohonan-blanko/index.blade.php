@@ -63,7 +63,7 @@
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload {{ $titlePage }}, foto, serta tanda tangan.
                         </p>
-                        <a href="{{ route('asesor-compact') }}">Compact Mode</a>
+                        <a href="{{ route('surat-permohonan-blanko.create') }}" class="btn btn-sm btn-dark mt-2">Buat Surat</a>
                     </div>
                     <div class="card-body">
                         <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 14px">
@@ -83,7 +83,7 @@
                                 <tr class="hoverMenuContainer">
                                     <td>{{ $loop->iteration }}</td>
                                     <td><span class="badge bg-success rounded-pill">{{ $data->nomor_surat }}</span></td>
-                                    <td>0 Orang</td>
+                                    <td>{{ $data->asesi_count }} Orang</td>
                                     <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $data->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
                                     <td>Downlaod PDF | Download Doc</td>
                                     <td>

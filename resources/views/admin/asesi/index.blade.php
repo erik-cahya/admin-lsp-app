@@ -57,119 +57,128 @@
             </div>
         </div>
         <!-- end page title -->
-
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <label class="form-label">Nomor Surat Permohonan</label>
-                        <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
-                            <option data-icon="feather-user" selected readonly disabled>Pilih Surat Permohonan...</option>
-                                @foreach ($suratPermohonan as $permohonanBlanko)
-                                    <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}">{{ $permohonanBlanko->nomor_surat }} | 300</option>
-                                @endforeach
-                        </select>
-                        <button type="submit" class="btn btn-sm btn-primary mt-2">Search Data</button>
+        <form action="{{ route('asesiIndex') }}" method="GET">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <label class="form-label">Nomor Surat Permohonan Blanko</label>
+                            <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="id_surat" name="id_surat" >
+                                <option data-icon="feather-user" selected readonly disabled>Pilih Surat Permohonan...</option>
+                                    @foreach ($suratPermohonan as $permohonanBlanko)
+                                        <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}">{{ $permohonanBlanko->nomor_surat }} | {{ $permohonanBlanko->asesi_count }}</option>
+                                    @endforeach
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-primary mt-2">Search Data</button>
+                            <a href="{{ route('surat-permohonan-blanko.view') }}" class="btn btn-sm btn-dark mt-2">Buat Surat Permohonan</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
+
 
         <div class="row">
-
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="header-title">{{ $titlePage }}</h4>
-                        <p class="text-muted mb-0">
-                            Anda Dapat Melakukan Edit atau Menghapus {{ $titlePage }} Berikut 
-                        </p>
-                        <a href="{{ route('asesiCompact') }}">Compact Mode</a> | 
-                        <a href="#">Download Template Excel</a>
-                    </div>
-                    <div class="card-body">
-                        <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>Nama Lengkap Asesi</th>
-                                    <th>Nama Tempat Bekerja</th>
-                                    <th>Alamat Tempat Bekerja</th>
-                                    <th>NIK</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Alamat Tempat Tinggal</th>
-                                    <th>No Telp</th>
-                                    <th>Email</th>
-                                    <th>Pendidikan Terakhir</th>
-                                    <th>Jabatan Pekerjaan</th>
-                                    <th>Skema Sertifikasi</th>
-                                    <th>Rencana Uji Kompetensi</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($dataAsesi as $asesi)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
 
-                                    <td class="hoverMenuContainer">
-                                        {{ $asesi->nama_lengkap }}
+                @if (!isset($dataAsesi))   
+                    <div class="alert alert-info text-bg-info border-0" role="alert">
+                        <strong>Data Masih Kosong - </strong> Silahkan pilih nomor surat permohonan terlebih dahulu
+                    </div>   
+                @else          
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="header-title">{{ $titlePage }}</h4>
+                            <p class="text-muted mb-0">
+                                Anda Dapat Melakukan Edit atau Menghapus {{ $titlePage }} Berikut 
+                            </p>
+                            <a href="{{ route('asesiCompact') }}">Compact Mode</a> | 
+                            <a href="#">Download Template Excel</a>
+                        </div>
+                        <div class="card-body">
+                            <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>Nama Lengkap Asesi</th>
+                                        <th>Nama Tempat Bekerja</th>
+                                        <th>Alamat Tempat Bekerja</th>
+                                        <th>NIK</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Alamat Tempat Tinggal</th>
+                                        <th>No Telp</th>
+                                        <th>Email</th>
+                                        <th>Pendidikan Terakhir</th>
+                                        <th>Jabatan Pekerjaan</th>
+                                        <th>Skema Sertifikasi</th>
+                                        <th>Rencana Uji Kompetensi</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($dataAsesi as $asesi)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
 
-                                        <div class="row hover-menu">
-                                            <div class="col">
-                                                Edit |
-                                                {{-- Delete Button --}}
-                                                <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
+                                        <td class="hoverMenuContainer">
+                                            {{ $asesi->nama_lengkap }}
 
-                                                    <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
-                                                    <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
-                                                </form>
+                                            <div class="row hover-menu">
+                                                <div class="col">
+                                                    Edit |
+                                                    {{-- Delete Button --}}
+                                                    <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+
+                                                        <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
+                                                        <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
+                                                    </form>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td>{{ $asesi->nama_tempat_bekerja }}</td>
-                                    <td>{{ Str::limit($asesi->alamat, 30) }}</td>
-                                    <td>{{ $asesi->nik }}</td>
-                                    <td>{{ $asesi->tempat_lahir }}</td>
-                                    <td>{{ $asesi->tanggal_lahir }}</td>
-                                    <td>{{ $asesi->jenis_kelamin }}</td>
-                                    <td>{{ $asesi->alamat_tempat_tinggal }}</td>
-                                    <td>{{ $asesi->telp }}</td>
-                                    <td>{{ $asesi->email }}</td>
-                                    <td>{{ $asesi->pendidikan_terakhir }}</td>
-                                    <td>{{ $asesi->jabatan_pekerjaan }}</td>
-                                    <td>{{ $asesi->skema_sertifikasi }}</td>
-                                    <td>{{ $asesi->rencana_uji_kompetensi }}</td>
+                                        <td>{{ $asesi->nama_tempat_bekerja }}</td>
+                                        <td>{{ Str::limit($asesi->alamat, 30) }}</td>
+                                        <td>{{ $asesi->nik }}</td>
+                                        <td>{{ $asesi->tempat_lahir }}</td>
+                                        <td>{{ $asesi->tanggal_lahir }}</td>
+                                        <td>{{ $asesi->jenis_kelamin }}</td>
+                                        <td>{{ $asesi->alamat_tempat_tinggal }}</td>
+                                        <td>{{ $asesi->telp }}</td>
+                                        <td>{{ $asesi->email }}</td>
+                                        <td>{{ $asesi->pendidikan_terakhir }}</td>
+                                        <td>{{ $asesi->jabatan_pekerjaan }}</td>
+                                        <td>{{ $asesi->skema_sertifikasi }}</td>
+                                        <td>{{ $asesi->rencana_uji_kompetensi }}</td>
 
-                                    <td>
-                                        Edit |
+                                        <td>
+                                            Edit |
 
-                                        {{-- Delete Button --}}
-                                        <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
+                                            {{-- Delete Button --}}
+                                            <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
 
-                                            <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
-                                            <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                                <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
+                                                <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
 
-                    </div> <!-- end card body-->
-                </div> <!-- end card -->
-            </div><!-- end col-->
-        </div> <!-- end row-->
+                        </div> <!-- end card body-->
+                    </div> 
+                @endif
 
+            </div>
+        </div> 
+        
     </div>
     <!-- container -->
 

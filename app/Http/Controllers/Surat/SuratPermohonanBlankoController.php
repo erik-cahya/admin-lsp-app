@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Surat;
 
 use App\Http\Controllers\Controller;
+use App\Models\AsesiModel;
+use App\Models\AsesorModel;
 use App\Models\SuratPermohonanBlankoModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,7 +22,8 @@ class SuratPermohonanBlankoController extends Controller
     }
 
     public function index(){
-        $this->data['data_surat'] = SuratPermohonanBlankoModel::orderBy('nomor_surat', 'ASC')->get();
+        $this->data['data_surat'] = SuratPermohonanBlankoModel::withCount('asesi')->orderBy('nomor_surat', 'ASC')->get();
+
         return view('admin.surat.surat-permohonan-blanko.index', $this->data);
     }
 

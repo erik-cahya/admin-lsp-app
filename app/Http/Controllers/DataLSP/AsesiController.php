@@ -29,11 +29,19 @@ class AsesiController extends Controller
         return view('admin.asesi.compact.index', $this->data);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $this->data['dataAsesor'] = AsesorModel::get();
-        $this->data['dataAsesi'] = AsesiModel::get();
-        $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
+        $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::withCount('asesi')->get();
+        
+        // $this->data['dataAsesi'] = AsesiModel::get();
+        
+        // jika tombol cari diklik
+        if($request->has('id_surat'))
+        {
+            $this->data['dataAsesi'] = AsesiModel::where('id_surat_permohonan', $request->id_surat)->get();
+        }
+
 
         return view('admin.asesi.index', $this->data);
     }
