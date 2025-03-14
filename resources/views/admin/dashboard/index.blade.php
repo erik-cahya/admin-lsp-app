@@ -40,8 +40,9 @@
                         <div class="float-end">
                             <i class="ri-eye-line widget-icon"></i>
                         </div>
-                        <h6 class="text-uppercase mt-0" title="Customers">Jumlah Asesor</h6>
-                        <h3 class="my-2">{{ $countAsesor }} Orang</h3>
+                        <span class="badge bg-pink-subtle rounded-1 text-pink text-uppercase fs-12 fw-semibold px-2 py-1 ">Jumlah Asesor</span>
+
+                        <h3 class="my-2">{{ $countAsesor }} <span class="text-uppercase fs-14 ">/ Orang</span></h3>
                     </div>
                 </div>
             </div> <!-- end col-->
@@ -52,8 +53,9 @@
                         <div class="float-end">
                             <i class="ri-wallet-2-line widget-icon"></i>
                         </div>
-                        <h6 class="text-uppercase mt-0" title="Customers">Jumlah TUK</h6>
-                        <h3 class="my-2">{{ $countTUK }} TUK</h3>
+                        <span class="badge bg-purple-subtle rounded-1 text-purple text-uppercase fs-12 fw-semibold px-2 py-1 ">Jumlah TUK</span>
+
+                        <h3 class="my-2">{{ $countTUK }} <span class="text-uppercase fs-14 ">/ TUK</span></h3>
                     </div>
                 </div>
             </div> <!-- end col-->
@@ -64,8 +66,9 @@
                         <div class="float-end">
                             <i class="ri-shopping-basket-line widget-icon"></i>
                         </div>
-                        <h6 class="text-uppercase mt-0" title="Customers">Jumlah Skema</h6>
-                        <h3 class="my-2">{{ $countSkema }} Skema</h3>
+                        <span class="badge bg-info-subtle rounded-1 text-info text-uppercase fs-12 fw-semibold px-2 py-1 ">Jumlah Skema</span>
+
+                        <h3 class="my-2">{{ $countSkema }} <span class="text-uppercase fs-14 ">/ Skema</span></h3>
                     </div>
                 </div>
             </div> <!-- end col-->
@@ -76,13 +79,16 @@
                         <div class="float-end">
                             <i class="ri-group-2-line widget-icon"></i>
                         </div>
-                        <h6 class="text-uppercase mt-0" title="Customers">Jumlah Asesi</h6>
-                        <h3 class="my-2">{{ $countAsesi }} Orang</h3>
+                        <span class="badge bg-primary-subtle rounded-1 text-primary text-uppercase fs-12 fw-semibold px-2 py-1 ">Jumlah Asesi</span>
+
+                        <h3 class="my-2">{{ $countAsesi }} <span class="text-uppercase fs-14 ">/ Orang</span></h3>
                     </div>
                 </div>
             </div> <!-- end col-->
         </div>
 
+
+        
 
 
     </div>
