@@ -44,12 +44,13 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="header-title">Data Surat Tugas</h4>
+
                         <p class="text-muted mb-0">
                             Anda bisa mendownload surat dengan format .pdf ataupun .doc
                         </p>
-                    <a href="{{ route('surat-tugas-asesor-compact') }}" class="btn btn-sm btn-dark mt-2">Compact Mode</a>
-                    <a href="{{ route('surat-tugas-asesor.create') }}" class="btn btn-sm btn-dark mt-2">Create Surat Tugas</a>
 
+                        <a href="{{ route('surat-tugas-asesor-compact') }}" class="btn btn-sm btn-dark mt-2">Compact Mode</a>
+                        <a href="{{ route('surat-tugas-asesor.create') }}" class="btn btn-sm btn-dark mt-2">Create Surat Tugas</a>
 
                     </div>
                     <div class="card-body">

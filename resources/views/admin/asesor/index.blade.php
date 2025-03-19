@@ -60,10 +60,12 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="header-title">{{ $titlePage }}</h4>
+
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload {{ $titlePage }}, foto, serta tanda tangan.
                         </p>
-                        <a href="{{ route('asesor-compact') }}">Compact Mode</a>
+
+                        <a href="{{ route('asesor-compact') }}" class="btn btn-sm btn-dark mt-2">Compact Mode</a>
                     </div>
                     <div class="card-body">
                         <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">

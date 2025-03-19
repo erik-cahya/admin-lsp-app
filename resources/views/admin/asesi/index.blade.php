@@ -63,14 +63,18 @@
                     <div class="card">
                         <div class="card-body">
                             <label class="form-label">Nomor Surat Permohonan Blanko</label>
+
                             <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="id_surat" name="id_surat" >
                                 <option data-icon="feather-user" selected readonly disabled>Pilih Surat Permohonan...</option>
-                                    @foreach ($suratPermohonan as $permohonanBlanko)
-                                        <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}">{{ $permohonanBlanko->nomor_surat }} | {{ $permohonanBlanko->asesi_count }}</option>
-                                    @endforeach
+                                @foreach ($suratPermohonan as $permohonanBlanko)
+                                    <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}">{{ $permohonanBlanko->nomor_surat }} | {{ $permohonanBlanko->asesi_count }}</option>
+                                @endforeach
                             </select>
+
                             <button type="submit" class="btn btn-sm btn-primary mt-2">Search Data</button>
+
                             <a href="{{ route('surat-permohonan-blanko.view') }}" class="btn btn-sm btn-dark mt-2">Buat Surat Permohonan</a>
+
                         </div>
                     </div>
                 </div>
@@ -81,19 +85,21 @@
         <div class="row">
             <div class="col-12">
 
-                @if (!isset($dataAsesi))   
+                @if (!isset($dataAsesi))
                     <div class="alert alert-info text-bg-info border-0" role="alert">
                         <strong>Data Masih Kosong - </strong> Silahkan pilih nomor surat permohonan terlebih dahulu
-                    </div>   
-                @else          
+                    </div>
+                @else
                     <div class="card">
                         <div class="card-header">
                             <h4 class="header-title">{{ $titlePage }}</h4>
                             <p class="text-muted mb-0">
-                                Anda Dapat Melakukan Edit atau Menghapus {{ $titlePage }} Berikut 
+                                Anda Dapat Melakukan Edit atau Menghapus {{ $titlePage }} Berikut
                             </p>
-                            <a href="{{ route('asesiCompact') }}">Compact Mode</a> | 
-                            <a href="#">Download Template Excel</a>
+
+                            <a href="{{ route('asesiCompact') }}" class="btn btn-sm btn-dark mt-2">Compact Mode</a>
+                            <a href="#" class="btn btn-sm btn-dark mt-2">Download Template Excel</a>
+
                         </div>
                         <div class="card-body">
                             <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">
@@ -173,12 +179,12 @@
                             </table>
 
                         </div> <!-- end card body-->
-                    </div> 
+                    </div>
                 @endif
 
             </div>
-        </div> 
-        
+        </div>
+
     </div>
     <!-- container -->
 
