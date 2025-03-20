@@ -73,22 +73,37 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label class="form-label">Surat Permohonan Pengajuan Blanko</label>
-                                <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="id_surat_permohonan" name="id_surat_permohonan" >
+                                <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="id_surat_permohonan" name="id_surat_permohonan" required>
                                     <option selected readonly disabled>Pilih Nomor Surat Pengajuan...</option>
                                     @foreach ($suratPermohonan as $permohonanBlanko)
                                         <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}">{{ $permohonanBlanko->nomor_surat }}</option>
-                                    @endforeach    
-                                    
+                                    @endforeach
+
                                 </select>
+
+                                @error('id_surat_permohonan')
+                                    <style> .border-red{border-color: #d03f3f} </style>
+
+                                    <div class="invalid-tooltip d-block position-static mt-1">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-lg-6">
                                 <label class="form-label">Upload File Excel</label>
                                     <input type="file" name="file" id="file" class="form-control" required>
+                                    @error('file')
+                                        <style> .border-red{border-color: #d03f3f} </style>
+
+                                        <div class="invalid-tooltip d-block position-static mt-1">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-sm btn-primary mt-2 d-block">Import Data</button>
                         </div>
-                    </div>        
+                    </div>
             </form>
         </div>
 
@@ -151,6 +166,6 @@
      <!-- App js -->
      <script src="{{ asset('velonic_admin') }}/assets/js/app.js"></script>
 
-   
+
 
 @endsection

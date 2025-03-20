@@ -33,9 +33,9 @@ class AsesiController extends Controller
     {
         $this->data['dataAsesor'] = AsesorModel::get();
         $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::withCount('asesi')->get();
-        
+
         // $this->data['dataAsesi'] = AsesiModel::get();
-        
+
         // jika tombol cari diklik
         if($request->has('id_surat'))
         {
@@ -60,6 +60,12 @@ class AsesiController extends Controller
         // dd($request->all());
         $request->validate([
             'file' => 'required|mimes:xlsx,csv',
+            'id_surat_permohonan' => 'required'
+        ], [
+            'file.required' => 'Silahkan pilih file.',
+            'file.mimes' => 'Format file harus xlsx/csv.',
+
+            'id_surat_permohonan.required' => 'Anda belum memilih surat pengajuan.',
         ]);
 
         $data = Excel::toArray([], $request->file('file'));
@@ -106,7 +112,7 @@ class AsesiController extends Controller
 
             return view('admin.asesi.import', $this->data);
 
-            exit; // stop proses 
+            exit; // stop proses
         }
 
         // Jika semua data valid, lanjutkan proses

@@ -87,9 +87,16 @@
 
                 @if (!isset($dataAsesi))
                     <div class="alert alert-info text-bg-info border-0" role="alert">
-                        <strong>Data Masih Kosong - </strong> Silahkan pilih nomor surat permohonan terlebih dahulu
+                        <strong>Silahkan search data terlebih dahulu !</strong>
+                    </div>
+
+
+                @elseif($dataAsesi->count()=== 0)
+                    <div class="alert alert-info text-bg-info border-0" role="alert">
+                        <strong>Data Masih Kosong - </strong> Silahkan import data asesi terlebih dahulu
                     </div>
                 @else
+
                     <div class="card">
                         <div class="card-header">
                             <h4 class="header-title">{{ $titlePage }}</h4>
