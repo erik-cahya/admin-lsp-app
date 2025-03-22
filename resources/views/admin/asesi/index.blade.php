@@ -105,7 +105,6 @@
                             </p>
 
                             <a href="{{ route('asesiCompact') }}" class="btn btn-sm btn-dark mt-2">Compact Mode</a>
-                            <a href="#" class="btn btn-sm btn-dark mt-2">Download Template Excel</a>
 
                         </div>
                         <div class="card-body">
@@ -140,7 +139,12 @@
 
                                             <div class="row hover-menu">
                                                 <div class="col">
-                                                    Edit |
+
+
+                                                    {{-- Edit Button --}}
+                                                    <span type="button" class="d-inline" data-bs-toggle="modal" data-bs-target="#modalAsesi{{ $asesi->id }}">
+                                                        Edit</span>
+                                                    |
                                                     {{-- Delete Button --}}
                                                     <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
                                                         {{ csrf_field() }}
@@ -168,8 +172,10 @@
                                         <td>{{ $asesi->rencana_uji_kompetensi }}</td>
 
                                         <td>
-                                            Edit |
-
+                                            <span type="button" class="d-inline" data-bs-toggle="modal" data-bs-target="#modalAsesi{{ $asesi->id }}">
+                                                Edit
+                                            </span>
+                                            |
                                             {{-- Delete Button --}}
                                             <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
                                                 {{ csrf_field() }}
@@ -187,6 +193,121 @@
 
                         </div> <!-- end card body-->
                     </div>
+
+
+                    {{-- Modal --}}
+@foreach ($dataAsesi as $asesi)
+<form enctype="multipart/form-data" method="POST" action="{{ route('asesiUpdated', $asesi->id) }}">
+    @csrf
+    <div class="modal fade" id="modalAsesi{{ $asesi->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content fs-10">
+                <div class="modal-header modal-colored-header bg-info">
+                    <h4 class="modal-title" id="info-header-modalLabel">Edit {{ $titlePage }} {{ $asesi->nama_lengkap }} </h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body fs-10">
+                    {{-- Modal Content --}}
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Nama Asesi</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->nama_lengkap }}" name="nama_lengkap">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tempat Bekerja</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->nama_tempat_bekerja }}" name="nama_tempat_bekerja">
+                            </div>
+                        </div>
+                        <div class="col-6">
+
+
+                            <div class="mb-3">
+                                <label class="form-label">Jenis Kelamin</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->jenis_kelamin }}" name="jenis_kelamin">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">NIK</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->nik }}" name="nik">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tempat Lahir</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->tempat_lahir }}" name="tempat_lahir">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tanggal Lahir</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->tanggal_lahir }}" name="tanggal_lahir">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Alamat Tempat Bekerja</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->alamat }}" name="alamat">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Alamat Tempat Tinggal</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->alamat_tempat_tinggal }}" name="alamat_tempat_tinggal">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">No Telp</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->telp }}" name="telp">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->email }}" name="email">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Pendidikan</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->pendidikan_terakhir }}" name="pendidikan_terakhir">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Jabatan Pekerjaan</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->jabatan_pekerjaan }}" name="jabatan_pekerjaan">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Skema Sertifikasi</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->skema_sertifikasi }}" name="skema_sertifikasi">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Rencana Uji Kompetensi</label>
+                                <input class="form-control fs-12" type="text" value="{{ $asesi->rencana_uji_kompetensi }}" name="rencana_uji_kompetensi">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Update Data</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ </form>
+@endforeach
+<!-- /* End Modal -->
                 @endif
 
             </div>
@@ -196,6 +317,13 @@
     <!-- container -->
 
 </div>
+
+
+
+
+
+
+
 
 @endsection
 @section('js_page')

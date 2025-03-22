@@ -18,7 +18,6 @@ class AsesiController extends Controller
 
     public function __construct()
     {
-        // Inisialisasi titlePage
         $this->data['titlePage'] = 'Data Asesi';
     }
 
@@ -46,15 +45,13 @@ class AsesiController extends Controller
         return view('admin.asesi.index', $this->data);
     }
 
-    // Page Import Data
     public function importDataAsesi(){
         $this->data['countDataError'] = 0;
         $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
+
         return view('admin.asesi.import', $this->data);
     }
 
-
-    // Import Excel
     public function importExcel(Request $request)
     {
         // dd($request->all());
@@ -99,10 +96,6 @@ class AsesiController extends Controller
 
         // Jika ada baris tidak valid / data error, tampilkan semuanya
         if (!empty($invalidRows)) {
-            // foreach ($invalidRows as $error) {
-            //     echo '<div style="margin-top:15px; margin-left:20px;">' . $error['row_number'] . ' . ' . $error['message'] . ' | Baris ke: ' . $error['row_number'] . ' | Nama: ' . $error['nama'] . ' | ' . $error['value'] . "</div><hr>";
-            // }
-
             // dd(count($invalidRows));
 
             $this->data["dataError"] = $invalidRows;
@@ -184,13 +177,6 @@ class AsesiController extends Controller
             }
         }
 
-        // dd('data berhasil diimport');
-        // dd($duplicates);
-        // return back()->with([
-        //     'success' => 'Data berhasil diimpor!',
-        //     'duplicates' => $duplicates,
-        // ]);
-
         $this->data = [
             'success' => 'Data berhasil diimpor!',
             'dataError' => $duplicates,
@@ -205,6 +191,10 @@ class AsesiController extends Controller
         }else{
             return view('admin.asesi.import', $this->data);
         }
+    }
+
+    public function asesiUpdate(Request $request, $id){
+        dd($request);
     }
 
 

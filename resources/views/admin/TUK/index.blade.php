@@ -101,7 +101,7 @@
                                                         <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $tuk->id }}">
                                                             <i class="ri-edit-fill"></i> Edit
                                                         </button>
-                                                        
+
                                                         {{-- Delete Button --}}
                                                         <form action="{{ route('tukDeleted', $tuk->id) }}" method="POST">
                                                             {{ csrf_field() }}
@@ -245,7 +245,7 @@
                             method: "DELETE",
                             headers: {
                                 "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                            }   
+                            }
                         })
                         .then(response => {
                             if (response.ok) {

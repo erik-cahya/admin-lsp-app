@@ -76,15 +76,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('get_data_tuk/{id}', [SuratTugasAsesorController::class, 'get_data_tuk'])->name('get_data_tuk');
 
-
-
-    // Route::get('tukAdd', [AsesiController::class, 'tukAdd'])->name('tukAdd');
-    // Route::post('tukAdded', [AsesiController::class, 'tukAdded'])->name('tukAdded');
-    // Route::get('tukEdit', [AsesiController::class, 'tukEdit'])->name('tukEdit');
-    // Route::post('tukEdited/{id}', [AsesiController::class, 'tukEdited'])->name('tukEdited');
-    // Route::delete('tukDeleted/{id}', [AsesiController::class, 'tukDeleted'])->name('tukDeleted');
-
-
     // ############################################################ Asesor
     Route::get('asesor/compact', [AsesorController::class, 'compact'])->name('asesor-compact');
     Route::resource('/asesor', AsesorController::class)->except('show');
@@ -99,14 +90,22 @@ Route::middleware(['auth'])->group(function () {
     // ############################################################ Skema
     Route::resource('/skema', SkemaController::class)->except('show','edit', 'create');
 
+
+
      // ############################################################ Asesi
+    //  Route::resource('/asesi', AsesiController::class);
      Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
+     Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
+
      Route::get('/asesi/import', [AsesiController::class, 'importDataAsesi'])->name('asesiAdd');
      Route::post('/asesi/import', [AsesiController::class, 'importExcel'])->name('asesiAdded');
 
+     Route::post('/asesiUpdate/{id}', [AsesiController::class, 'asesiUpdate'])->name('asesiUpdated');
 
-     Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
+
      Route::delete('/asesiDeleted/{id}', [AsesiController::class, 'asesiDeleted'])->name('asesiDeleted');
+
+
 
      // ############################################################ Blanko
      Route::get('/suratPermohonanBlanko', [SuratPermohonanBlankoController::class, 'index'] )->name('surat-permohonan-blanko.view');
