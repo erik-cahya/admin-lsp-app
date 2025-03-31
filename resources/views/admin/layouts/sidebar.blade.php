@@ -57,26 +57,6 @@
                 </div>
             </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#suratPermohonanBlanko" aria-expanded="false" aria-controls="suratPermohonanBlanko" class="side-nav-link">
-                    <i class="ri-briefcase-line"></i>
-                    <span> Permohonan Blanko </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="suratPermohonanBlanko">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="{{ route('surat-permohonan-blanko.view') }}">
-                                <span class="badge bg-success float-end">{{ App\Models\SuratPermohonanBlankoModel::count() }}</span>
-                                List Surat 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('surat-permohonan-blanko.create') }}">Create Surat</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#qrCode" aria-expanded="false" aria-controls="qrCode" class="side-nav-link">
@@ -219,22 +199,21 @@
 
             {{-- Pengajuan Blanko --}}
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#pengajuanBlanko" aria-expanded="false" aria-controls="pengajuanBlanko" class="side-nav-link">
-                    <i class="ri-user-fill"></i>
-                    <span>Pengajuan Blanko</span>
+                <a data-bs-toggle="collapse" href="#suratPermohonanBlanko" aria-expanded="false" aria-controls="suratPermohonanBlanko" class="side-nav-link">
+                    <i class="ri-briefcase-line"></i>
+                    <span> Permohonan Blanko </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="pengajuanBlanko">
+                <div class="collapse" id="suratPermohonanBlanko">
                     <ul class="side-nav-second-level">
                         <li>
                             <a href="{{ route('surat-permohonan-blanko.view') }}">
-                                Surat Permohonan Blanko
+                                <span class="badge bg-success float-end">{{ App\Models\SuratPermohonanBlankoModel::count() }}</span>
+                                List Surat 
                             </a>
                         </li>
-                    </ul>
-                    <ul class="side-nav-second-level">
                         <li>
-                            <a href="{{ route('surat-permohonan-blanko.create') }}">Create Surat Permohonan</a>
+                            <a href="{{ route('surat-permohonan-blanko.create') }}">Create Surat</a>
                         </li>
                     </ul>
                 </div>
