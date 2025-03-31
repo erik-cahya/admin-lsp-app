@@ -63,10 +63,9 @@
                                 <h4 class="header-title">Import Data Asesi</h4>
                             </div>
                             <div class="col-lg-6 d-flex justify-content-end">
-                                <a href="#" class="btn btn-sm btn-dark">
+                                <a href="{{ asset('template_surat/template_excel_import_asesi.xlsx') }}" class="btn btn-sm btn-dark">
                                     <i class="ri-download-line"></i> Download Template Excel
                                 </a>
-
                             </div>
                         </div>
                     </div>

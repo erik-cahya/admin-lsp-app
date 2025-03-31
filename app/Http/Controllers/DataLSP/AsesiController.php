@@ -138,7 +138,13 @@ class AsesiController extends Controller
                 ['nik', '=', $nik],
             ])->exists();
 
+
             if ($exists) {
+                // Get Nomor Surat
+                $idSuratPermohonan = AsesiModel::where('nik', $nik)->value('id_surat_permohonan');
+                $nomorSuratPermohonan = SuratPermohonanBlankoModel::where('id', $idSuratPermohonan)->value('nomor_surat');
+
+
                 $duplicates[] = [
                     'nama_lengkap' => $nama_lengkap,
                     'nama_tempat_bekerja' => $nama_tempat_bekerja,
@@ -154,7 +160,9 @@ class AsesiController extends Controller
                     'jabatan_pekerjaan' => $jabatan_pekerjaan,
                     'skema_sertifikasi' => $skema_sertifikasi,
                     'rencana_uji_kompetensi' => $rencana_uji_kompetensi,
+                    'nomor_surat_permohonan' => $nomorSuratPermohonan
                 ];
+
             } else {
                 DB::table('asesi')->insert([
                     'id' => Str::uuid(),

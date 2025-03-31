@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AsesiModel;
 use App\Models\AsesorModel;
 use App\Models\SuratPermohonanBlankoModel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -62,4 +63,14 @@ class SuratPermohonanBlankoController extends Controller
 
         dd($request->all());
     }
+
+    public function generatePdf($id)
+    {
+        $dataSurat = SuratPermohonanBlankoModel::where('id', $id)->withCount('asesi')->first();
+        // dd($dataSurat);
+        $pdf = PDF::loadView('admin.surat.surat-permohonan-blanko.pdf', ['dataSurat' => $dataSurat]);
+
+        return $pdf->stream($dataSurat->nama_surat . '.pdf');
+    }
+
 }

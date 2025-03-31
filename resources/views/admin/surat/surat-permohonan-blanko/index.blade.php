@@ -26,11 +26,6 @@
             cursor: pointer;
             display: block;
         }
-
-        /* .hover-menu-container:hover + .hover-menu{
-            display: block;
-            background-color: blue;
-        } */
     </style>
 @endsection
 
@@ -85,7 +80,8 @@
                                     <td><span class="badge bg-success rounded-pill">{{ $data->nomor_surat }}</span></td>
                                     <td>{{ $data->asesi_count }} Orang</td>
                                     <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $data->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
-                                    <td>Downlaod PDF | Download Doc</td>
+                                    {{-- <td><button type="button" class="btn btn-xs btn-light"><i class="ri-hearts-fill me-1"></i> <span>Like</span> </button></td> --}}
+                                    <td><a href="{{ route('surat-permohonan-blanko.generatePdf', $data->id) }}" class="badge bg-dark px-2"><i class="ri-download-2-fill me-1"></i>  Download PDF</a></td>
                                     <td>
                                         Edit |
 

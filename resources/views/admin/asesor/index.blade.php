@@ -26,11 +26,6 @@
             cursor: pointer;
             display: block;
         }
-
-        /* .hover-menu-container:hover + .hover-menu{
-            display: block;
-            background-color: blue;
-        } */
     </style>
 @endsection
 

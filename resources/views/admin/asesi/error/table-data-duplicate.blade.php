@@ -2,6 +2,7 @@
   <thead>
       <tr>
           <th nowrap>Status</th>
+          <th nowrap>Nomor Surat Permohonan</th>
           <th nowrap>Nama Lengkap</th>
           <th nowrap>Nama Tempat Bekerja</th>
           <th nowrap>Alamat Bekerja</th>
@@ -22,6 +23,7 @@
       @foreach($dataError as $duplicate)
           <tr>
               <td><span class="badge bg-warning">Data Duplicate</span></td>
+              <td nowrap>{{ $duplicate['nomor_surat_permohonan'] }}</td>
               <td nowrap>{{ $duplicate['nama_lengkap'] }}</td>
               <td nowrap>{{ $duplicate['nama_tempat_bekerja'] }}</td>
               <td nowrap>{{ $duplicate['alamat'] }}</td>

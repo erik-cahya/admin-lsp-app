@@ -28,7 +28,6 @@ class ManajemenController extends Controller
     }
 
     public function compact(){
-
         $this->data['dataManajemen'] = ManajemenModel::get();
         return view('admin.manajemen.compact.index', $this->data);
     }
