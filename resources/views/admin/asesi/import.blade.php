@@ -72,16 +72,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label class="form-label">Surat Permohonan Pengajuan Blanko</label>
-                                <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="id_surat_permohonan" name="id_surat_permohonan" required>
-                                    <option selected readonly disabled>Pilih Nomor Surat Pengajuan...</option>
-                                    @foreach ($suratPermohonan as $permohonanBlanko)
-                                        <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}">{{ $permohonanBlanko->nomor_surat }}</option>
-                                    @endforeach
+                                <label class="form-label">Nama Data Asesi</label>
+                                <div class="input-group">
+                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                    <input type="text" class="form-control" placeholder="Inputkan Nama Group Data Asesi" name="nama_group_asesi">
+                                </div>
 
-                                </select>
-
-                                @error('id_surat_permohonan')
+                                @error('nama_group_asesi')
                                     <style> .border-red{border-color: #d03f3f} </style>
 
                                     <div class="invalid-tooltip d-block position-static mt-1">
@@ -122,9 +119,9 @@
                     <div class="card-body">
                         <div class="table-responsive-sm">
                            @if ($status == 'error')
-                                @include('admin.asesi.error.table-data-error')
+                                @include('admin.asesi.table-error.table-data-error')
                             @elseif($status == 'duplicate')
-                                @include('admin.asesi.error.table-data-duplicate')
+                                @include('admin.asesi.table-error.table-data-duplicate')
                            @endif
                         </div>
 

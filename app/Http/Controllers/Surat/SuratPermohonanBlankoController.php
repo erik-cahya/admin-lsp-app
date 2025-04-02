@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Surat;
 
 use App\Http\Controllers\Controller;
-use App\Models\AsesiModel;
-use App\Models\AsesorModel;
 use App\Models\SuratPermohonanBlankoModel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
@@ -71,6 +69,12 @@ class SuratPermohonanBlankoController extends Controller
         $pdf = PDF::loadView('admin.surat.surat-permohonan-blanko.pdf', ['dataSurat' => $dataSurat]);
 
         return $pdf->stream($dataSurat->nama_surat . '.pdf');
+    }
+
+    public function destroy(Request $request)
+    {
+        SuratPermohonanBlankoModel::destroy($request->id);
+        return response()->json(['message' => 'Data Surat Berhasil Dihapus']);
     }
 
 }

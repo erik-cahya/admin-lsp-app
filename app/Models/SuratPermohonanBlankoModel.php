@@ -33,6 +33,6 @@ class SuratPermohonanBlankoModel extends Model
     
     public function asesi()
     {
-        return $this->hasMany(AsesiModel::class, 'id_surat_permohonan', 'id');
+        return $this->hasMany(DataAsesiModel::class, 'id_surat_permohonan', 'id');
     }
 }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\DataLSP;
 
 use App\Http\Controllers\Controller;
-use App\Models\AsesiModel;
+use App\Models\AsesiGroupModel;
 use App\Models\AsesorModel;
+use App\Models\DataAsesiModel;
 use App\Models\SuratPermohonanBlankoModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,22 +24,29 @@ class AsesiController extends Controller
 
     public function compact(){
         $this->data['dataAsesor'] = AsesorModel::get();
-        $this->data['dataAsesi'] = AsesiModel::get();
+        $this->data['dataAsesi'] = DataAsesiModel::get();
 
         return view('admin.asesi.compact.index', $this->data);
     }
 
     public function index(Request $request)
     {
-        $this->data['dataAsesor'] = AsesorModel::get();
-        $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::withCount('asesi')->get();
 
-        // $this->data['dataAsesi'] = AsesiModel::get();
+        // dd($request->query('id_group'));
+
+        $this->data['dataAsesor'] = AsesorModel::get();
+        
+        // $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::withCount('asesi')->get();
+
+        $this->data['asesiGroup'] = AsesiGroupModel::withCount('asesi')->get();
+
+
+        // $this->data['dataAsesi'] = DataAsesiModel::get();
 
         // jika tombol cari diklik
-        if($request->has('id_surat'))
+        if($request->has('id_group'))
         {
-            $this->data['dataAsesi'] = AsesiModel::where('id_surat_permohonan', $request->id_surat)->get();
+            $this->data['dataAsesi'] = DataAsesiModel::where('id_asesi_group', $request->id_group)->get();
         }
 
 
@@ -57,13 +65,19 @@ class AsesiController extends Controller
         // dd($request->all());
         $request->validate([
             'file' => 'required|mimes:xlsx,csv',
-            'id_surat_permohonan' => 'required'
+            'nama_group_asesi' => 'required|unique:asesi_group'
         ], [
             'file.required' => 'Silahkan pilih file.',
             'file.mimes' => 'Format file harus xlsx/csv.',
 
-            'id_surat_permohonan.required' => 'Anda belum memilih surat pengajuan.',
+            'nama_group_asesi.required' => 'Harap Masukkan Nama Data Asesi.',
+            'nama_group_asesi.unique' => 'Nama Data Asesi Ini Sudah Ada.',
         ]);
+
+        $asesiGroup = AsesiGroupModel::create([
+            'nama_group_asesi' => $request->nama_group_asesi,
+        ]);
+
 
         $data = Excel::toArray([], $request->file('file'));
         $rows = $data[0];
@@ -134,14 +148,14 @@ class AsesiController extends Controller
             $rencana_uji_kompetensi = preg_replace('/\s+/', ' ', strtoupper(trim($row[14])));
 
             // Periksa apakah data sudah ada di database
-            $exists = DB::table('asesi')->where([
+            $exists = DB::table('asesi_data')->where([
                 ['nik', '=', $nik],
             ])->exists();
 
 
             if ($exists) {
                 // Get Nomor Surat
-                $idSuratPermohonan = AsesiModel::where('nik', $nik)->value('id_surat_permohonan');
+                $idSuratPermohonan = DataAsesiModel::where('nik', $nik)->value('id_surat_permohonan');
                 $nomorSuratPermohonan = SuratPermohonanBlankoModel::where('id', $idSuratPermohonan)->value('nomor_surat');
 
 
@@ -164,9 +178,9 @@ class AsesiController extends Controller
                 ];
 
             } else {
-                DB::table('asesi')->insert([
+                DB::table('asesi_data')->insert([
                     'id' => Str::uuid(),
-                    'id_surat_permohonan' => $request->id_surat_permohonan,
+                    'id_asesi_group' => $asesiGroup->id,
                     'nama_lengkap' => $nama_lengkap,
                     'nama_tempat_bekerja' => $nama_tempat_bekerja,
                     'alamat' => $alamat,
@@ -208,7 +222,7 @@ class AsesiController extends Controller
 
     public function asesiDeleted($id)
     {
-        AsesiModel::destroy($id);
+        DataAsesiModel::destroy($id);
 
         $flashData = [
             'judul' => 'Delete Success',

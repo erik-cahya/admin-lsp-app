@@ -115,6 +115,8 @@ Route::middleware(['auth'])->group(function () {
      Route::get('/suratPermohonanBlanko/create', [SuratPermohonanBlankoController::class, 'create'] )->name('surat-permohonan-blanko.create');
      Route::post('/suratPermohonanBlanko/store', [SuratPermohonanBlankoController::class, 'store'] )->name('surat-permohonan-blanko.store');
 
+     Route::delete('/suratPermohonanBlanko/destroy/{id}', [SuratPermohonanBlankoController::class, 'destroy'] )->name('surat-permohonan-blanko.delete');
+
      Route::get('/suratPermohonanBlanko/generate-pdf/{id}', [SuratPermohonanBlankoController::class, 'generatePdf'])->name('surat-permohonan-blanko.generatePdf');
 
 

@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AsesiModel extends Model
+class DataAsesiModel extends Model
 {
-    protected $table = 'asesi';
+    protected $table = 'asesi_data';
     protected $guarded = ['id'];
     protected $primaryKey = 'id';
     use HasFactory;
@@ -16,7 +16,4 @@ class AsesiModel extends Model
     protected $casts = [
         'id' => 'string',
     ];
-
-    
-
 }

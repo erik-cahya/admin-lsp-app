@@ -26,6 +26,11 @@
             cursor: pointer;
             display: block;
         }
+
+        .download-btn-hover:hover{
+            background-color: #495057!important;
+            transition: 0.3s;
+        }
     </style>
 @endsection
 
@@ -81,17 +86,17 @@
                                     <td>{{ $data->asesi_count }} Orang</td>
                                     <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $data->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
                                     {{-- <td><button type="button" class="btn btn-xs btn-light"><i class="ri-hearts-fill me-1"></i> <span>Like</span> </button></td> --}}
-                                    <td><a href="{{ route('surat-permohonan-blanko.generatePdf', $data->id) }}" class="badge bg-dark px-2"><i class="ri-download-2-fill me-1"></i>  Download PDF</a></td>
+                                    <td><a href="{{ route('surat-permohonan-blanko.generatePdf', $data->id) }}" class="badge bg-dark px-2 download-btn-hover"><i class="ri-download-2-fill me-1"></i>  Download PDF</a></td>
                                     <td>
                                         Edit |
 
-                                        {{-- Delete Button --}}
-                                        <form action="#" method="POST" class="d-inline">
+                                        {{-- Delete Button using SweetAlert --}}
+                                        <form action="" method="POST" class="d-inline">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 
-                                            <input type="hidden" id="idAsesi" name="id_asesi" value="">
-                                            <span type="button" class="text-danger deleteButton" data-nama="">Delete</span>
+                                            <input type="hidden" name="id_surat_permohonan" value="{{ $data->id }}">
+                                            <span type="button" class="text-danger deleteButton" data-nomor="{{ $data->nomor_surat }}">Delete</span>
                                         </form>
                                     </td>
                                 </tr>
@@ -140,20 +145,17 @@
     <script>
         document.addEventListener("click", function (event) {
             if (event.target.classList.contains("deleteButton")) {
-                const asesorId = event.target.closest("tr").querySelector('input[name="id_asesor"]').value;
-                const namaAsesor = event.target.getAttribute("data-nama");
+                const asesId = event.target.closest("tr").querySelector('input[name="id_surat_permohonan"]').value;
+                const nomorSurat = event.target.getAttribute("data-nomor");
 
-                console.log(namaAsesor);
                 Swal.fire({
                     title: "Are you sure?",
-                    text: "Apakah Anda ingin menghapus data " + namaAsesor + " ?",
+                    text: "Apakah Anda ingin menghapus surat permohonan " + nomorSurat + " ?",
                     icon: "warning",
                     showCancelButton: true,
                 }).then((willDelete) => {
                     if (willDelete.isConfirmed) {
-                        // const url = `/asesor.destroy/${asesorId}`;
-                        const url = `{{ route('asesor.destroy', ':id') }}`.replace(':id', asesorId);
-                        console.log(url);
+                        const url = `/suratPermohonanBlanko/destroy/${asesId}`;
                         fetch(url, {
 
                             method: "DELETE",
@@ -164,13 +166,13 @@
                             if (response.ok) {
                                 Swal.fire(
                                     'Terhapus',
-                                    'Data Berhasil Dihapus',
+                                    'Surat Permohonan Berhasil Dihapus',
                                     'success'
                                 ).then((result) => {
                                     if (result.isConfirmed) {
                                         window.location.reload();
                                     }
-                                        // console.log("URL Fetch:", "{{ route('asesiDeleted'," . asesorId . ") }}");
+                                        // console.log("URL Fetch:", "{{ route('surat-permohonan-blanko.delete'," . asesId . ") }}");
 
                                 });
                             } else {
@@ -190,7 +192,7 @@
                     } else {
                         Swal.fire({
                             title: "Dibatalkan",
-                            text: "Data batal dihapus.",
+                            text: "Surat Permohonan Batal Dihapus.",
                             icon: "error",
                         });
                     }
