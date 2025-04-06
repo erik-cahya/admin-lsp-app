@@ -17,7 +17,7 @@ class AsesiController extends Controller
 
     protected $data;
 
-    public function __construct()
+    public function __construct() 
     {
         $this->data['titlePage'] = 'Data Asesi';
     }
@@ -31,29 +31,19 @@ class AsesiController extends Controller
 
     public function index(Request $request)
     {
-
-        // dd($request->query('id_group'));
-
         $this->data['dataAsesor'] = AsesorModel::get();
-        
-        // $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::withCount('asesi')->get();
-
         $this->data['asesiGroup'] = AsesiGroupModel::withCount('asesi')->get();
-
-
-        // $this->data['dataAsesi'] = DataAsesiModel::get();
 
         // jika tombol cari diklik
         if($request->has('id_group'))
         {
             $this->data['dataAsesi'] = DataAsesiModel::where('id_asesi_group', $request->id_group)->get();
         }
-
-
         return view('admin.asesi.index', $this->data);
     }
 
-    public function importDataAsesi(){
+    public function importDataAsesi()
+    {
         $this->data['countDataError'] = 0;
         $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
 
@@ -62,7 +52,6 @@ class AsesiController extends Controller
 
     public function importExcel(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'file' => 'required|mimes:xlsx,csv',
             'nama_group_asesi' => 'required|unique:asesi_group'
@@ -105,13 +94,11 @@ class AsesiController extends Controller
                     'value' => 'NIK: ' . $row[4] . ' (Jumlah Digit: ' . $length . ')'
                 ];
             }
-
         }
 
         // Jika ada baris tidak valid / data error, tampilkan semuanya
-        if (!empty($invalidRows)) {
-            // dd(count($invalidRows));
-
+        if (!empty($invalidRows)) 
+        {
             $this->data["dataError"] = $invalidRows;
             $this->data['countDataError'] = count($invalidRows);
             $this->data['status'] = 'error';
@@ -229,8 +216,6 @@ class AsesiController extends Controller
             'pesan' => 'Data TUK Telah Dihapus',
             'swalFlashIcon' => 'success',
         ];
-        // return redirect()->route('tuk')->with('flashData', $flashData);
-
         return response()->json(['message' => 'Data Surat Berhasil Dihapus']);
     }
 }
