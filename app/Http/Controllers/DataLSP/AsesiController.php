@@ -46,6 +46,8 @@ class AsesiController extends Controller
     {
         $this->data['countDataError'] = 0;
         $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
+// 
+        $this->data['asesiGroup'] = AsesiGroupModel::withCount('asesi')->get();
 
         return view('admin.asesi.import', $this->data);
     }
@@ -63,11 +65,7 @@ class AsesiController extends Controller
             'nama_group_asesi.unique' => 'Nama Data Asesi Ini Sudah Ada.',
         ]);
 
-        $asesiGroup = AsesiGroupModel::create([
-            'nama_group_asesi' => $request->nama_group_asesi,
-        ]);
-
-
+    
         $data = Excel::toArray([], $request->file('file'));
         $rows = $data[0];
         $invalidRows = [];
@@ -109,6 +107,10 @@ class AsesiController extends Controller
             exit; // stop proses
         }
 
+        $asesiGroup = AsesiGroupModel::create([
+            'nama_group_asesi' => $request->nama_group_asesi,
+        ]);
+
         // Jika semua data valid, lanjutkan proses
         $duplicates = [];
         foreach ($rows as $key => $row)
@@ -139,12 +141,10 @@ class AsesiController extends Controller
                 ['nik', '=', $nik],
             ])->exists();
 
-
             if ($exists) {
                 // Get Nomor Surat
-                $idSuratPermohonan = DataAsesiModel::where('nik', $nik)->value('id_surat_permohonan');
-                $nomorSuratPermohonan = SuratPermohonanBlankoModel::where('id', $idSuratPermohonan)->value('nomor_surat');
-
+                $idAsesiGroup = DataAsesiModel::where('nik', $nik)->value('id_asesi_group');
+                $namaGroupAsesi = AsesiGroupModel::where('id', $idAsesiGroup)->value('nama_group_asesi');
 
                 $duplicates[] = [
                     'nama_lengkap' => $nama_lengkap,
@@ -161,12 +161,11 @@ class AsesiController extends Controller
                     'jabatan_pekerjaan' => $jabatan_pekerjaan,
                     'skema_sertifikasi' => $skema_sertifikasi,
                     'rencana_uji_kompetensi' => $rencana_uji_kompetensi,
-                    'nomor_surat_permohonan' => $nomorSuratPermohonan
+                    'nama_group_asesi' => $namaGroupAsesi
                 ];
 
             } else {
-                DB::table('asesi_data')->insert([
-                    'id' => Str::uuid(),
+                DataAsesiModel::create([
                     'id_asesi_group' => $asesiGroup->id,
                     'nama_lengkap' => $nama_lengkap,
                     'nama_tempat_bekerja' => $nama_tempat_bekerja,
@@ -196,7 +195,14 @@ class AsesiController extends Controller
         $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
 
         if($this->data['countDataError'] == 0){
-            return redirect('/asesi');
+
+            $dataPesan = [
+                'judul' => 'Success',
+                'pesan' => 'Asesi Berhasil Diimport',
+                'swalFlashIcon' => 'success',
+            ];
+            return redirect('/asesi?id_group=' . $asesiGroup->id)->with('flashData', $dataPesan);
+
         }else{
             return view('admin.asesi.import', $this->data);
         }

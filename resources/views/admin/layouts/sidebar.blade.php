@@ -139,7 +139,6 @@
                     <ul class="side-nav-second-level">
                         <li>
                             <a href="{{ route('asesiIndex') }}">
-                                <span class="badge bg-success float-end">{{ App\Models\DataAsesiModel::count() }}</span>
                                 List Asesi
                             </a>
                         </li>

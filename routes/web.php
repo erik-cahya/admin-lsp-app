@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataLSP\AsesiController;
 use App\Http\Controllers\DataLSP\AsesorController;
+use App\Http\Controllers\DataLSP\GroupAsesiController;
 use App\Http\Controllers\DataLSP\ManajemenController;
 use App\Http\Controllers\DataLSP\SkemaController;
 use App\Http\Controllers\DataLSP\TUKController;
@@ -108,6 +109,8 @@ Route::middleware(['auth'])->group(function () {
 
      Route::delete('/asesiDeleted/{id}', [AsesiController::class, 'asesiDeleted'])->name('asesiDeleted');
 
+    // ############################################################ Group Asesi
+    Route::delete('/asesiGroupDeleted/{id}', [GroupAsesiController::class, 'destroy'])->name('groupAsesiDelete');
 
 
      // ############################################################ Blanko

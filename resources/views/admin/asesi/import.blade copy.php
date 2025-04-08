@@ -26,57 +26,10 @@
             display: block;
         }
 
-        /* ============================ Style Group Asesi CRUD Button ============================ */
-        .action-cell {
-            position: relative;
-            width: 150px;
-        }
-        
-        .action-buttons {
-            display: flex;
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            width: 0;
-        }
-        
-        .action-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            margin: 0 2px;
-            color: #555;
-            white-space: nowrap;
-        }
-        
-        .action-button:hover {
-            color: #000;
-        }
-        
-        .dots-button {
-            background: none;
-            cursor: pointer;
-            position: absolute;
-            right: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        tr:hover .dots-button {
-            opacity: 0;
-            width: 0;
-        }
-        
-        tr:hover .action-buttons {
-            opacity: 1;
-            width: 150px;
-        }
-            
+        /* .hover-menu-container:hover + .hover-menu{
+            display: block;
+            background-color: blue;
+        } */
     </style>
 @endsection
 
@@ -156,6 +109,65 @@
 
         @if (empty($countDataError))
             <!-- list asesi group -->
+
+            <style>
+                .action-cell {
+                    position: relative;
+                    width: 150px;
+                }
+                
+                .action-buttons {
+                    display: flex;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                    overflow: hidden;
+                    width: 0;
+                }
+                
+                .action-button {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: 5px;
+                    margin: 0 2px;
+                    color: #555;
+                    /* font-size: 14px; */
+                    white-space: nowrap;
+                }
+                
+                .action-button:hover {
+                    color: #000;
+                }
+                
+                .dots-button {
+                    background: none;
+                    border: 1px solid #dcdee4;
+                    cursor: pointer;
+                    /* font-size: 18px; */
+                    /* padding: 5px 10px; */
+                    position: absolute;
+                    right: 50%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    transition: all 0.3s ease;
+                }
+                
+                tr:hover .dots-button {
+                    opacity: 0;
+                    width: 0;
+                }
+                
+                tr:hover .action-buttons {
+                    opacity: 1;
+                    width: 150px;
+                }
+            </style>
+
+
             <div class="row">
                 <div class="col-lg-8">
                     <form action="{{ route('asesiAdded') }}" method="POST" enctype="multipart/form-data">
@@ -187,24 +199,22 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $group->nama_group_asesi }}</td>
                                             <td><h3 class="d-inline">{{ $group->asesi_count }}</h3> Orang</td>
+                                            
+
                                             <td class="action-cell">
                                                 <div class="action-buttons">
-
+                                                    
                                                     <a href="/asesi?id_group={{ $group->id }}" style="padding:10px; margin-left:5px" class="badge bg-success"><i class="ri-eye-fill"></i></a>
-                                                    <a href="#" style="padding:10px; margin-left:5px" class="badge bg-warning"><i class="ri-edit-fill"></i></a>
-                                                    {{-- <a href="#" class="badge bg-primary px-1 download-btn-hover"><i class="ri-edit-line me-1"></i>  Edit Group</a> --}}
-
-                                                    {{-- Delete Button --}}
-                                                    <form action="#" method="POST" class="d-inline">
+                                                    
+                                                    <a style="padding:10px; margin-left:5px" class="badge bg-warning"><i class="ri-edit-fill"></i></a>
+                                                    
+                                                    <form action="" method="POST" class="d-inline">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <input type="hidden" name="id_group" value="{{ $group->id }}">
-                                                        <a style="padding:10px; margin-left:5px" type="submit" class="badge bg-danger download-btn-hover deleteButton" data-nama="{{ $group->nama_group_asesi }}"><i class="ri-delete-bin-fill"></i></a>
+                                                        <a style="padding:10px; margin-left:5px" class="badge bg-danger download-btn-hover deleteButton" data-nama="{{ $group->nama_group_asesi }}"><i class="ri-delete-bin-fill"></i></a>
                                                     </form>
                                                 </div>
-                                                
-                                                <span class="dots-button"><i class="ri-menu-line"></i></span>
-
+                                                <button class="dots-button">⋮</button>
                                             </td>
 
                                         </tr>

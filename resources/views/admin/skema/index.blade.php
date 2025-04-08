@@ -170,7 +170,7 @@
             </div>
         </div>
     </div>
- </form>
+</form>
 {{-- /* End Add Modal Skema --}}
 
 @endsection

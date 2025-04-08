@@ -187,7 +187,7 @@
                                 </tbody>
                             </table>
 
-                        </div> <!-- end card body-->
+                        </div>
                     </div>
 
 
@@ -346,7 +346,7 @@
      <!-- App js -->
      <script src="{{ asset('velonic_admin') }}/assets/js/app.js"></script>
 
-     {{-- Sweet Alert --}}
+     {{-- Sweet Alert Delete --}}
     <script>
         document.addEventListener("click", function (event) {
             if (event.target.classList.contains("deleteButton")) {
@@ -405,6 +405,6 @@
             }
         });
     </script>
-    {{-- /* End Sweet Alert --}}
+    {{-- /* End Sweet Alert Delete--}}
 
 @endsection

@@ -10,6 +10,7 @@ class DataAsesiModel extends Model
     protected $table = 'asesi_data';
     protected $guarded = ['id'];
     protected $primaryKey = 'id';
+
     use HasFactory;
 
 

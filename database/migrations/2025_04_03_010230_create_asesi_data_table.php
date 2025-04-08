@@ -15,8 +15,8 @@ class CreateAsesiDataTable extends Migration
     {
         Schema::create('asesi_data', function (Blueprint $table) {
 
-            $table->uuid('id')->primary();
-            $table->string('id_asesi_group')->nullable();
+            $table->id();
+            $table->uuid('id_asesi_group')->nullable();
             // $table->foreignId('group_id')->constrained('asesi_group')->onDelete('cascade');
             $table->string('nama_lengkap')->nullable();
             $table->string('nama_tempat_bekerja')->nullable();

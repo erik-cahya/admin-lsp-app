@@ -14,7 +14,7 @@ class CreateAsesorTable extends Migration
     public function up()
     {
         Schema::create('asesor', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('nama_asesor');
             $table->string('no_reg');
             $table->string('no_npwp')->nullable();
