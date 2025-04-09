@@ -53,6 +53,13 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
         ],
 
+        'portofolio' => [
+            'driver' => 'local',
+            'root' => public_path('files/portofolio'),
+            'url' => env('APP_URL').'/files/portofolio',
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*

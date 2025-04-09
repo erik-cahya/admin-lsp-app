@@ -142,11 +142,11 @@
 
 
                                         <div class="col-lg-6 mb-4">
-                                            <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="foto_asesor img-thumbnail" width="200px">
+                                            <img src="{{ asset('img/no-pic.png') }}" class="foto_asesor img-thumbnail" width="200px">
                                         </div>
 
                                         <div class="col-lg-6 mb-4">
-                                            <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
+                                            <img src="{{ asset('img/no-pic.png') }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
                                         </div>
 
                                     </div>

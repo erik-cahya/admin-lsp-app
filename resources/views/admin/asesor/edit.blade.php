@@ -110,24 +110,40 @@
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
-                                                <label for="foto_asesor" class="form-label">Upload Gambar Asesor (Opsional)</label>
-                                                <input type="file" id="foto_asesor" name="foto_asesor" class="form-control" onchange="previewImage()">
-                                            </div>
-
-
-                                            <div class="col-lg-6 mb-4">
-                                                <label for="gambar_tanda_tangan" class="form-label">Upload Tanda Tangan (Opsional)</label>
-                                                <input type="file" id="gambar_tanda_tangan" name="gambar_tanda_tangan" class="form-control" onchange="previewImageTandaTangan()">
-                                            </div>
-
-
-                                            <div class="col-lg-6 mb-4">
-                                                <img src="{{ asset($dataAsesor->foto_asesor === null ? 'velonic_admin/assets/images/users/avatar-2.jpg' : 'img/foto_asesor/'.$dataAsesor->foto_asesor) }}" class="foto_asesor img-thumbnail" width="200px">
+                                                <label class="form-label">Status<span class="text-danger">*</span></label>
+                                                <select class="form-select" name="status">
+                                                    <option value="Active" {{ $dataAsesor->status === 'Active' ? 'selected' : '' }}>Active</option>
+                                                    <option value="Inactive" {{ ($dataAsesor->status ?? 'Inactive') !== 'Active' ? 'selected' : '' }}>Inactive</option>
+                                                </select>
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
-                                                <img src="{{ asset($dataAsesor->gambar_tanda_tangan === null ? 'velonic_admin/assets/images/users/avatar-2.jpg' : 'img/gambar_tanda_tangan/'.$dataAsesor->gambar_tanda_tangan) }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
+                                                <label for="portofolio_file" class="form-label">Portofolio (zip) @if(!is_null($dataAsesor->portofolio_file)) | <a target="_blank" href="{{ asset('files/portofolio/' . $dataAsesor->portofolio_file) }}"> View <i class="ri-eye-fill "></i> </a>@endif</label>
+                                                <input type="file" id="portofolio_file" name="portofolio_file" class="form-control">
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-4">
+                                                    <label for="foto_asesor" class="form-label">Upload Gambar Asesor (Opsional)</label>
+                                                    <input type="file" id="foto_asesor" name="foto_asesor" class="form-control" onchange="previewImage()">
+                                                </div>
+
+
+                                                <div class="col-lg-6 mb-4">
+                                                    <label for="gambar_tanda_tangan" class="form-label">Upload Tanda Tangan (Opsional)</label>
+                                                    <input type="file" id="gambar_tanda_tangan" name="gambar_tanda_tangan" class="form-control" onchange="previewImageTandaTangan()">
+                                                </div>
+
+
+                                                <div class="col-lg-6 mb-4">
+                                                    <img src="{{ asset($dataAsesor->foto_asesor === null ? 'img/no-pic.png' : 'img/foto_asesor/'.$dataAsesor->foto_asesor) }}" class="foto_asesor img-thumbnail" width="200px">
+                                                </div>
+
+                                                <div class="col-lg-6 mb-4">
+                                                    <img src="{{ asset($dataAsesor->gambar_tanda_tangan === null ? 'img/no-pic.png' : 'img/gambar_tanda_tangan/'.$dataAsesor->gambar_tanda_tangan) }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
+                                                </div>
+                                            </div>
+
 
                                         </div>
                                         <div class="justify-content-start row">
