@@ -1,43 +1,13 @@
 [
     {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 765716303391390439,
-        "name": "Admin LSP",
-        "timestamps": "06-Jan-2025 18:19:02"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 765716303391390439,
-        "name": "Admin LSP",
-        "timestamps": "05-Feb-2025 13:45:42"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 270897870523973237,
-        "name": "Admin LSP",
-        "timestamps": "05-Feb-2025 14:05:22"
-    },
-    {
-        "ip_address": "180.254.227.223",
+        "ip_address": "114.10.156.194",
         "country": "Indonesia",
         "regionName": "Bali",
-        "city": "Banjar Pacung",
-        "isp": "PT. TELKOM INDONESIA",
+        "city": "Ubud",
+        "isp": "PT. INDOSAT Tbk",
         "id_user": 719760510601167112,
         "name": "Admin LSP",
-        "timestamps": "09-Feb-2025 21:32:43"
+        "timestamps": "09-Apr-2025 14:53:44"
     },
     {
         "ip_address": "123.231.250.36",
@@ -45,548 +15,69 @@
         "regionName": "Jakarta",
         "city": "Karet Tengsin",
         "isp": "PT Aplikanusa Lintasarta",
-        "id_user": 719760510601167112,
-        "name": "Admin LSP",
-        "timestamps": "10-Feb-2025 08:25:26"
+        "id_user": 457409681887412254,
+        "name": "Erik Cahya",
+        "timestamps": "09-Apr-2025 14:54:34"
     },
     {
-        "ip_address": "123.231.250.36",
-        "country": "Indonesia",
-        "regionName": "Jakarta",
-        "city": "Karet Tengsin",
-        "isp": "PT Aplikanusa Lintasarta",
-        "id_user": 719760510601167112,
-        "name": "Admin LSP",
-        "timestamps": "14-Feb-2025 15:56:18"
-    },
-    {
-        "ip_address": "123.231.250.36",
-        "country": "Indonesia",
-        "regionName": "Jakarta",
-        "city": "Karet Tengsin",
-        "isp": "PT Aplikanusa Lintasarta",
-        "id_user": 719760510601167112,
-        "name": "Admin LSP",
-        "timestamps": "14-Feb-2025 18:48:45"
-    },
-    {
-        "ip_address": "123.231.250.36",
-        "country": "Indonesia",
-        "regionName": "Jakarta",
-        "city": "Karet Tengsin",
-        "isp": "PT Aplikanusa Lintasarta",
-        "id_user": 719760510601167112,
-        "name": "Admin LSP",
-        "timestamps": "15-Feb-2025 13:04:34"
-    },
-    {
-        "ip_address": "180.254.227.223",
+        "ip_address": "114.10.156.194",
         "country": "Indonesia",
         "regionName": "Bali",
-        "city": "Banjar Pacung",
-        "isp": "PT. TELKOM INDONESIA",
-        "id_user": 719760510601167112,
-        "name": "Admin LSP",
-        "timestamps": "16-Feb-2025 22:51:16"
+        "city": "Ubud",
+        "isp": "PT. INDOSAT Tbk",
+        "id_user": 457409681887412254,
+        "name": "Erik Cahya",
+        "timestamps": "09-Apr-2025 15:15:32"
     },
     {
-        "ip_address": "123.231.250.36",
-        "country": "Indonesia",
-        "regionName": "Jakarta",
-        "city": "Karet Tengsin",
-        "isp": "PT Aplikanusa Lintasarta",
-        "id_user": 719760510601167112,
-        "name": "Admin LSP",
-        "timestamps": "17-Feb-2025 11:08:05"
-    },
-    {
-        "ip_address": "123.231.250.36",
-        "country": "Indonesia",
-        "regionName": "Jakarta",
-        "city": "Karet Tengsin",
-        "isp": "PT Aplikanusa Lintasarta",
-        "id_user": 719760510601167112,
-        "name": "Admin LSP",
-        "timestamps": "17-Feb-2025 11:08:22"
-    },
-    {
-        "ip_address": "123.231.250.36",
-        "country": "Indonesia",
-        "regionName": "Jakarta",
-        "city": "Karet Tengsin",
-        "isp": "PT Aplikanusa Lintasarta",
-        "id_user": 719760510601167112,
-        "name": "Admin LSP",
-        "timestamps": "17-Feb-2025 11:09:11"
-    },
-    {
-        "ip_address": "180.254.227.223",
+        "ip_address": "114.10.157.81",
         "country": "Indonesia",
         "regionName": "Bali",
-        "city": "Banjar Pacung",
-        "isp": "PT. TELKOM INDONESIA",
+        "city": "Banjar Dukuh",
+        "isp": "PT. INDOSAT Tbk",
         "id_user": 719760510601167112,
         "name": "Admin LSP",
-        "timestamps": "20-Feb-2025 23:53:48"
+        "timestamps": "09-Apr-2025 15:39:26"
     },
     {
-        "ip_address": "180.254.227.223",
+        "ip_address": "114.10.157.81",
         "country": "Indonesia",
         "regionName": "Bali",
-        "city": "Banjar Pacung",
-        "isp": "PT. TELKOM INDONESIA",
-        "id_user": 719760510601167112,
-        "name": "Admin LSP",
-        "timestamps": "22-Feb-2025 02:06:54"
+        "city": "Banjar Dukuh",
+        "isp": "PT. INDOSAT Tbk",
+        "id_user": 457409681887412254,
+        "name": "Erik Cahya",
+        "timestamps": "09-Apr-2025 15:40:04"
     },
     {
-        "ip_address": "123.231.250.36",
+        "ip_address": "114.10.157.81",
         "country": "Indonesia",
-        "regionName": "Jakarta",
-        "city": "Karet Tengsin",
-        "isp": "PT Aplikanusa Lintasarta",
+        "regionName": "Bali",
+        "city": "Banjar Dukuh",
+        "isp": "PT. INDOSAT Tbk",
         "id_user": 719760510601167112,
         "name": "Admin LSP",
-        "timestamps": "22-Feb-2025 17:36:30"
+        "timestamps": "09-Apr-2025 15:43:36"
     },
     {
-        "ip_address": "123.231.250.36",
+        "ip_address": "114.10.157.81",
         "country": "Indonesia",
-        "regionName": "Jakarta",
-        "city": "Karet Tengsin",
-        "isp": "PT Aplikanusa Lintasarta",
+        "regionName": "Bali",
+        "city": "Banjar Dukuh",
+        "isp": "PT. INDOSAT Tbk",
         "id_user": 719760510601167112,
         "name": "Admin LSP",
-        "timestamps": "26-Feb-2025 16:14:13"
+        "timestamps": "09-Apr-2025 16:02:22"
     },
     {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
+        "ip_address": "114.10.157.81",
+        "country": "Indonesia",
+        "regionName": "Bali",
+        "city": "Banjar Dukuh",
+        "isp": "PT. INDOSAT Tbk",
+        "id_user": 719760510601167112,
         "name": "Admin LSP",
         "timestamps": "02-Mar-2025 02:21:02"
     },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "02-Mar-2025 22:27:48"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "03-Mar-2025 12:12:52"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "03-Mar-2025 17:46:59"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "04-Mar-2025 12:30:22"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "04-Mar-2025 15:21:45"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "05-Mar-2025 10:53:24"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "06-Mar-2025 14:53:26"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "07-Mar-2025 09:42:48"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "08-Mar-2025 16:15:57"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "08-Mar-2025 20:56:48"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "10-Mar-2025 01:47:06"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "10-Mar-2025 11:22:54"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "12-Mar-2025 15:59:24"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "12-Mar-2025 20:48:11"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "13-Mar-2025 14:45:27"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 270897870523973237,
-        "name": "Admin LSP",
-        "timestamps": "18-Mar-2025 14:40:05"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 351222558804592315,
-        "name": "Admin LSP",
-        "timestamps": "18-Mar-2025 14:41:09"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 351222558804592315,
-        "name": "Admin LSP",
-        "timestamps": "19-Mar-2025 00:25:39"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 351222558804592315,
-        "name": "Admin LSP",
-        "timestamps": "20-Mar-2025 03:32:23"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 351222558804592315,
-        "name": "Admin LSP",
-        "timestamps": "20-Mar-2025 15:47:54"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 351222558804592315,
-        "name": "Admin LSP",
-        "timestamps": "20-Mar-2025 20:15:10"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 351222558804592315,
-        "name": "Admin LSP",
-        "timestamps": "22-Mar-2025 15:22:38"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 351222558804592315,
-        "name": "Admin LSP",
-        "timestamps": "22-Mar-2025 21:10:05"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "24-Mar-2025 12:16:35"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "25-Mar-2025 00:50:37"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "28-Mar-2025 02:01:44"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "29-Mar-2025 02:06:50"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "30-Mar-2025 00:40:18"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "31-Mar-2025 22:37:25"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 320442414969499246,
-        "name": "Admin LSP",
-        "timestamps": "01-Apr-2025 10:13:22"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 567188191986771130,
-        "name": "Admin LSP",
-        "timestamps": "01-Apr-2025 11:59:12"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 567188191986771130,
-        "name": "Admin LSP",
-        "timestamps": "02-Apr-2025 00:27:40"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 552818349923603475,
-        "name": "Admin LSP",
-        "timestamps": "03-Apr-2025 01:04:38"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 552818349923603475,
-        "name": "Admin LSP",
-        "timestamps": "03-Apr-2025 20:31:03"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 552818349923603475,
-        "name": "Admin LSP",
-        "timestamps": "03-Apr-2025 23:37:03"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 552818349923603475,
-        "name": "Admin LSP",
-        "timestamps": "05-Apr-2025 00:19:04"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 552818349923603475,
-        "name": "Admin LSP",
-        "timestamps": "07-Apr-2025 14:58:10"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 938813179954519679,
-        "name": "Admin LSP",
-        "timestamps": "07-Apr-2025 15:12:54"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 266634078640044112,
-        "name": "Admin LSP",
-        "timestamps": "07-Apr-2025 16:15:13"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 480022800981735845,
-        "name": "Admin LSP",
-        "timestamps": "07-Apr-2025 16:22:06"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 480022800981735845,
-        "name": "Admin LSP",
-        "timestamps": "08-Apr-2025 11:36:13"
-    },
-    {
-        "ip_address": "127.0.0.1",
-        "country": null,
-        "regionName": null,
-        "city": null,
-        "isp": null,
-        "id_user": 480022800981735845,
-        "name": "Admin LSP",
-        "timestamps": "08-Apr-2025 12:47:09"
-    }
+    
 ]

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AsesorModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 
 class AsesorController extends Controller
@@ -25,6 +26,11 @@ class AsesorController extends Controller
     // function get Tanda Tangan
     public function getTandaTangan($id){
         return AsesorModel::where('id', $id)->first()->gambar_tanda_tangan;
+    }
+
+    //function get Portofolio
+    public function getPortofolio($id){
+        return AsesorModel::where('id', $id)->first()->portolio_file;
     }
 
     public function compact(){
@@ -110,14 +116,12 @@ class AsesorController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-
         $validated = $request->validate([
-            'nama_asesor' => 'required|unique:asesor',
-            'no_telp' => 'required|unique:asesor',
-            'no_reg' => 'required|unique:asesor',
-            'no_npwp' => 'unique:asesor',
-            'alamat' => 'required',
+            'nama_asesor' => 'required',
+            // 'no_telp' => 'required',
+            'no_reg' => 'required',
+            // 'alamat' => 'required',
+            'status' => 'required',
         ], [
             'nama_asesor.required' => 'Nama Asesor Tidak Boleh Kosong.',
             'nama_asesor.unique' => 'Nama ini sudah terdaftar.',
@@ -131,6 +135,7 @@ class AsesorController extends Controller
             'no_npwp.unique' => 'Nomor NPWP ini sudah terdaftar.',
 
             'alamat.required' => 'Alamat Tidak Boleh Kosong.',
+            'status.required' => 'Status Tidak Boleh Kosong.',
         ]);
 
         // Image Upload Handler
@@ -151,6 +156,15 @@ class AsesorController extends Controller
             $request->gambar_tanda_tangan->move(public_path('img/gambar_tanda_tangan'), $gambarTandaTangan);
         }
 
+         // Portofolio Upload
+        if ($request->portofolio_file === null) {
+            $portofolio = $this->getPortofolio($id);
+        } else {
+            File::delete(public_path('files/portofolio/' . $this->getPortofolio($id)));
+            $portofolio = 'portofolio_' .$request->nama_asesor.'.'.$request->portofolio_file->extension();
+            Storage::disk('portofolio')->put($portofolio, File::get($request->portofolio_file));
+        }
+
         AsesorModel::where('id', $id)->update([
             'nama_asesor' => $request->nama_asesor,
             'no_reg' => $request->no_reg,
@@ -158,7 +172,9 @@ class AsesorController extends Controller
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
             'foto_asesor' => $fotoAsesor,
-            'gambar_tanda_tangan' => $gambarTandaTangan
+            'gambar_tanda_tangan' => $gambarTandaTangan,
+            'status' => $request->status,
+            'portofolio_file' => $portofolio
         ]);
 
         $flashData = [

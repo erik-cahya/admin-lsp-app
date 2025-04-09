@@ -59,12 +59,12 @@
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload {{ $titlePage }}, foto, serta tanda tangan.
                         </p>
+                        <a target="_blank" href="{{ route('asesor-compact') }}">Compact Mode</a>
 
-                        <a href="{{ route('asesor-compact') }}" class="btn btn-sm btn-dark mt-2">Compact Mode</a>
                     </div>
                     <div class="card-body">
                         <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">
-                            <thead>
+                            <thead class="text-center">
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Asesor</th>
@@ -73,6 +73,7 @@
                                     <th>Alamat</th>
                                     <th>No NPWP</th>
                                     <th>Data</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -85,7 +86,7 @@
                                         <div class="d-flex align-items-start justify-content-between">
                                             <div class="d-flex">
                                                 <a class="me-2" href="#" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
-                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ $asesor->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" alt="">
+                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ $asesor->foto_asesor == null ? asset('img/no-pic.png') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" alt="">
                                                 </a>
                                                 <div class="info">
                                                     <span class="fw-bold">{{ $asesor->nama_asesor }}</span>
@@ -134,25 +135,33 @@
                                         @if ($asesor->foto_asesor == null)
                                                 <span class="text-muted d-block">Tidak Ada Gambar Profile</span>
                                             @else
-                                                <a class="d-block" href="{{ asset('img/foto_asesor/' . $asesor->foto_asesor) }}" download="{{ $asesor->foto_asesor }}">Download Profile</a>
+                                                <a class="d-block"  target="_blank href="{{ asset('img/foto_asesor/' . $asesor->foto_asesor) }}" download="{{ $asesor->foto_asesor }}">Download Profile</a>
                                         @endif
 
                                         {{-- Download Foto Profile --}}
                                         @if ($asesor->gambar_tanda_tangan == null)
                                                 <span class="text-muted d-block">Tidak ada Tanda Tangan</span>
                                             @else
-                                                <a class="d-block" href="{{ asset('img/gambar_tanda_tangan/' . $asesor->gambar_tanda_tangan) }}" download="{{ $asesor->gambar_tanda_tangan }}">Download Tanda Tangan</a>
+                                                <a class="d-block"  target="_blank href="{{ asset('img/gambar_tanda_tangan/' . $asesor->gambar_tanda_tangan) }}" download="{{ $asesor->gambar_tanda_tangan }}">Download Tanda Tangan</a>
+                                        @endif
+
+                                        {{-- Download Portofolio --}}
+                                        @if ($asesor->portofolio_file == null)
+                                                <span class="text-muted d-block">Tidak ada Portofolio</span>
+                                            @else
+                                                <a class="d-block" target="_blank" href="{{ asset('files/portofolio/' . $asesor->portofolio_file) }}" download="{{ $asesor->portofolio_file }}">Download Portofolio</a>
                                         @endif
                                     </td>
+                                    <td class="text-center fs-3"><i class='{{ $asesor->status === "Active" ? "ri-checkbox-circle-fill text-primary" : "ri-close-circle-fill text-danger" }}'></i></td>
                                     <td>
                                         <div class="btn-group mb-2">
                                             {{-- See Details --}}
-                                            <button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
+                                            <button type="button" class="btn btn-md btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
                                                 <i class="ri-eye-line"></i>
                                             </button>
 
                                             {{-- Edit Button --}}
-                                            <a href="/asesor/{{ $asesor->id }}/edit" class="btn btn-md btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
+                                            <a href="/asesor/{{ $asesor->id }}/edit" class="btn btn-md btn-success mx-1" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
                                                 <i class="ri-edit-line"></i>
                                             </a>
 
@@ -164,7 +173,7 @@
 
                                                 <input type="hidden" id="idAsesor" name="id_asesor" value="{{ $asesor->id }}">
 
-                                                <span type="button" class="btn btn-md btn-danger deleteButton" data-nama="{{ $asesor->nama_asesor }}">
+                                                <span type="button" class="btn btn-md btn-danger deleteButton mx-1" data-nama="{{ $asesor->nama_asesor }}">
                                                     <i class="ri-delete-bin-2-line"></i>
                                                 </span>
 
@@ -243,14 +252,14 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="skema" class="form-label">Foto Profile Asesor</label>
-                                <img src="{{ $asesor->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" class="avatar-lg d-block" width="200px">
+                                <img src="{{ $asesor->foto_asesor == null ? asset('img/no-pic.png') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" class="avatar-lg d-block" width="200px">
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label">Tanda Tangan Asesor</label>
-                                <img src="{{ $asesor->gambar_tanda_tangan == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/gambar_tanda_tangan/' . $asesor->gambar_tanda_tangan)  }}" class="avatar-lg d-block" width="200px">
+                                <img src="{{ $asesor->gambar_tanda_tangan == null ? asset('img/no-pic.png') : asset('img/gambar_tanda_tangan/' . $asesor->gambar_tanda_tangan)  }}" class="avatar-lg d-block" width="200px">
                             </div>
                         </div>
                     </div>
