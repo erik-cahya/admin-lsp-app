@@ -59,8 +59,8 @@
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload {{ $titlePage }}, foto, serta tanda tangan.
                         </p>
-                        <a target="_blank" href="{{ route('asesor-compact') }}">Compact Mode</a>
 
+                        <a target="_blank" href="{{ route('asesor-compact') }}">Compact Mode</a>
                     </div>
                     <div class="card-body">
                         <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">
