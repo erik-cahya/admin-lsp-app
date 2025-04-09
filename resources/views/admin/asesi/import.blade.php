@@ -29,7 +29,7 @@
         /* ============================ Style Group Asesi CRUD Button ============================ */
         .action-cell {
             position: relative;
-            width: 150px;
+            width: 180px;
         }
         
         .action-buttons {
@@ -39,7 +39,7 @@
             top: 50%;
             transform: translateY(-50%);
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
             overflow: hidden;
             width: 0;
         }
@@ -75,6 +75,14 @@
         tr:hover .action-buttons {
             opacity: 1;
             width: 150px;
+        }
+
+        .deleteButton {
+            pointer-events: auto; /* Pastikan ini ada */
+        }
+
+        .deleteButton i {
+            pointer-events: none; /* Biarkan event click ditangkap oleh parent */
         }
             
     </style>
@@ -121,7 +129,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <label class="form-label">Nama Data Asesi</label>
+                                <label class="form-label">Nama Group Asesi</label>
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
                                     <input type="text" class="form-control" placeholder="Inputkan Nama Group Data Asesi" name="nama_group_asesi">
@@ -192,15 +200,10 @@
 
                                                     <a href="/asesi?id_group={{ $group->id }}" style="padding:10px; margin-left:5px" class="badge bg-success"><i class="ri-eye-fill"></i></a>
                                                     <a href="#" style="padding:10px; margin-left:5px" class="badge bg-warning"><i class="ri-edit-fill"></i></a>
-                                                    {{-- <a href="#" class="badge bg-primary px-1 download-btn-hover"><i class="ri-edit-line me-1"></i>  Edit Group</a> --}}
 
                                                     {{-- Delete Button --}}
-                                                    <form action="#" method="POST" class="d-inline">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <input type="hidden" name="id_group" value="{{ $group->id }}">
-                                                        <a style="padding:10px; margin-left:5px" type="submit" class="badge bg-danger download-btn-hover deleteButton" data-nama="{{ $group->nama_group_asesi }}"><i class="ri-delete-bin-fill"></i></a>
-                                                    </form>
+                                                    <input type="hidden" name="id_group" value="{{ $group->id }}">
+                                                    <a style="padding:10px; margin-left:5px" type="submit" class="badge bg-danger download-btn-hover deleteButton" data-nama="{{ $group->nama_group_asesi }}"><i class="ri-delete-bin-fill"></i></a>
                                                 </div>
                                                 
                                                 <span class="dots-button"><i class="ri-menu-line"></i></span>
