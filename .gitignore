@@ -15,5 +15,4 @@ yarn-error.log
 /.vscode
 
 
-admin_LSP_log.json
-/storage/app/logs/*.json
+/storage/app/logs/admin_LSP_log.json

@@ -98,9 +98,8 @@
                                                             <a href="/asesor/{{ $asesor->id }}/edit" class="text-secondary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
                                                                 Details
                                                             </a>
-
+                                                            
                                                             |
-
                                                             {{-- Edit Button --}}
                                                             <a href="/asesor/{{ $asesor->id }}/edit">
                                                                 Edit
