@@ -41,7 +41,9 @@
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload data asesor, foto, serta tanda tangan.
                         </p>
-                        <a href="{{ route('manajemen-compact') }}">Compact Mode</a>
+
+                        <a href="{{ route('manajemen-compact') }}" class="btn btn-sm btn-dark mt-2">Compact Mode</a>
+
                     </div>
                     <div class="card-body">
                         <table id="datatable-buttons" class="table table-striped w-100 nowrap">

@@ -4,15 +4,18 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataLSP\AsesiController;
 use App\Http\Controllers\DataLSP\AsesorController;
+use App\Http\Controllers\DataLSP\GroupAsesiController;
 use App\Http\Controllers\DataLSP\ManajemenController;
 use App\Http\Controllers\DataLSP\SkemaController;
 use App\Http\Controllers\DataLSP\TUKController;
+use App\Http\Controllers\Developer\DevController;
 use App\Http\Controllers\Developer\ExcelController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\QRCode\QRCodeController;
 use App\Http\Controllers\Surat\SuratPermohonanBlankoController;
 use App\Http\Controllers\Surat\SuratTugasAsesorController;
+use App\Models\SuratPermohonanBlankoModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,10 +40,11 @@ Route::middleware(['guest'])->group(function () {
 
 
 
-// Route::get('/import', [ExcelController::class, 'index']);
+// Route::get('select2', function(){
+//     return view('Developer.select2.index');
+// });
 
-// Route::post('/import', [AsesiController::class, 'importExcel'])->name('import');
-
+Route::get('inputasesor', [DevController::class, 'index']);
 
 
 // Middleware Login
@@ -76,15 +80,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('get_data_tuk/{id}', [SuratTugasAsesorController::class, 'get_data_tuk'])->name('get_data_tuk');
 
-
-
-    // Route::get('tukAdd', [AsesiController::class, 'tukAdd'])->name('tukAdd');
-    // Route::post('tukAdded', [AsesiController::class, 'tukAdded'])->name('tukAdded');
-    // Route::get('tukEdit', [AsesiController::class, 'tukEdit'])->name('tukEdit');
-    // Route::post('tukEdited/{id}', [AsesiController::class, 'tukEdited'])->name('tukEdited');
-    // Route::delete('tukDeleted/{id}', [AsesiController::class, 'tukDeleted'])->name('tukDeleted');
-
-
     // ############################################################ Asesor
     Route::get('asesor/compact', [AsesorController::class, 'compact'])->name('asesor-compact');
     Route::resource('/asesor', AsesorController::class)->except('show');
@@ -99,19 +94,34 @@ Route::middleware(['auth'])->group(function () {
     // ############################################################ Skema
     Route::resource('/skema', SkemaController::class)->except('show','edit', 'create');
 
+
+
      // ############################################################ Asesi
+    //  Route::resource('/asesi', AsesiController::class);
      Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
+     Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
+
      Route::get('/asesi/import', [AsesiController::class, 'importDataAsesi'])->name('asesiAdd');
      Route::post('/asesi/import', [AsesiController::class, 'importExcel'])->name('asesiAdded');
 
+     Route::post('/asesiUpdate/{id}', [AsesiController::class, 'asesiUpdate'])->name('asesiUpdated');
 
-     Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
+
      Route::delete('/asesiDeleted/{id}', [AsesiController::class, 'asesiDeleted'])->name('asesiDeleted');
+
+    // ############################################################ Group Asesi
+    Route::delete('/asesiGroupDeleted/{id}', [GroupAsesiController::class, 'destroy'])->name('groupAsesiDelete');
+
 
      // ############################################################ Blanko
      Route::get('/suratPermohonanBlanko', [SuratPermohonanBlankoController::class, 'index'] )->name('surat-permohonan-blanko.view');
      Route::get('/suratPermohonanBlanko/create', [SuratPermohonanBlankoController::class, 'create'] )->name('surat-permohonan-blanko.create');
      Route::post('/suratPermohonanBlanko/store', [SuratPermohonanBlankoController::class, 'store'] )->name('surat-permohonan-blanko.store');
+
+     Route::delete('/suratPermohonanBlanko/destroy/{id}', [SuratPermohonanBlankoController::class, 'destroy'] )->name('surat-permohonan-blanko.delete');
+
+     Route::get('/suratPermohonanBlanko/generate-pdf/{id}', [SuratPermohonanBlankoController::class, 'generatePdf'])->name('surat-permohonan-blanko.generatePdf');
+
 
 
 });

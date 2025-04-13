@@ -40,7 +40,7 @@
                             <div class="col-lg-6">
                                 <h5 class="header-title mb-0">{{ $titlePage }}</h5>
                             </div>
-                            
+
                             <div class="col-lg-6">
                                 <div class="d-flex justify-content-end">
                                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add.modalSkema">Tambah Data Skema</button>
@@ -69,7 +69,7 @@
                                                 <div class="btn-group mb-2">
                                                     {{-- Edit Button --}}
                                                     <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit.modalSkema{{ $skema->id }}">
-                                                        <i class="ri-edit-line"></i> 
+                                                        <i class="ri-edit-line"></i>
                                                     </button>
 
                                                     {{-- Delete Button --}}
@@ -170,7 +170,7 @@
             </div>
         </div>
     </div>
- </form>
+</form>
 {{-- /* End Add Modal Skema --}}
 
 @endsection

@@ -26,11 +26,6 @@
             cursor: pointer;
             display: block;
         }
-
-        /* .hover-menu-container:hover + .hover-menu{
-            display: block;
-            background-color: blue;
-        } */
     </style>
 @endsection
 
@@ -60,9 +55,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="header-title">{{ $titlePage }}</h4>
+
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload {{ $titlePage }}, foto, serta tanda tangan.
                         </p>
+
                         <a target="_blank" href="{{ route('asesor-compact') }}">Compact Mode</a>
                     </div>
                     <div class="card-body">
@@ -101,9 +98,8 @@
                                                             <a href="/asesor/{{ $asesor->id }}/edit" class="text-secondary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
                                                                 Details
                                                             </a>
-
+                                                            
                                                             |
-
                                                             {{-- Edit Button --}}
                                                             <a href="/asesor/{{ $asesor->id }}/edit">
                                                                 Edit

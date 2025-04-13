@@ -63,10 +63,13 @@
                                     <p class="text-muted mb-0">
                                         Inputkan data yang diperlukan untuk {{ $titlePage }} pada form dibawah </code>
                                     </p>
+                                    <a href="{{ route('surat-permohonan-blanko.view') }}" class="btn btn-sm btn-dark mt-2">List Surat Permohonan</a>
+
                                 </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-lg-6 mb-4">
+                                            
+                                            <div class="col-lg-6 mb-3">
                                                 <label class="form-label">Nomor Surat<span class="text-danger">*</span></label>
                                                 
                                                 <div class="input-group">
@@ -80,15 +83,12 @@
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
-
-                                                
-
                                             </div>
 
-                                            <div class="col-lg-6 mb-4">
+                                            <div class="col-lg-6 mb-3">
                                                 <label class="form-label">Tanggal Surat<span class="text-danger">*</span></label>
 
-                                                <div class="mb-3 position-relative input-group" id="tanggalUji">
+                                                <div class="position-relative input-group" id="tanggalUji">
                                                     <div class="input-group-text"><i class="ri-calendar-fill"></i> </div>
                                                     <input type="text" class="form-control" placeholder="Select Date" data-provide="datepicker" data-date-format="dd-MM-yyyy" name="tanggal_surat" data-date-container="#tanggalUji" autocomplete="off" required value="{{ old('tanggal_surat') }}">
                                                 </div>
@@ -100,6 +100,63 @@
                                                     </div>
                                                 @enderror
                                             </div>
+
+                                            <div class="col-lg-6 mb-3">
+                                                <label class="form-label">Kompeten Anggaran BNSP<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                    <input type="number" class="form-control" placeholder="Inputkan Jumlah Kompeten Anggaran BNSP" name="kompeten_anggaran_bnsp">
+                                                </div>
+
+                                                @error('kompeten_anggaran_bnsp')
+                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label class="form-label">Kompeten Anggaran Kementrian<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                    <input type="number" class="form-control" placeholder="Inputkan Jumlah Kompeten Anggaran Kementrian" name="kompeten_anggaran_kementrian">
+                                                </div>
+
+                                                @error('kompeten_anggaran_kementrian')
+                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label class="form-label">Kompeten Anggaran Mandiri<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                    <input type="number" class="form-control" placeholder="Inputkan Jumlah Kompeten Anggaran Mandiri" name="kompeten_anggaran_mandiri">
+                                                </div>
+
+                                                @error('kompeten_anggaran_mandiri')
+                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label class="form-label">Kompeten Anggaran RCC<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                    <input type="number" class="form-control" placeholder="Inputkan Jumlah Kompeten Anggaran RCC" name="kompeten_rcc">
+                                                </div>
+
+                                                @error('kompeten_rcc')
+                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label class="form-label">Belum Kompeten<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                    <input type="number" class="form-control" placeholder="Inputkan Jumlah Belum Kompeten" name="belum_kompeten">
+                                                </div>
+
+                                                @error('belum_kompeten')
+                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
                                         </div>
 
                                         <div class="justify-content-start row">

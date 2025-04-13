@@ -63,6 +63,7 @@
                                     <p class="text-muted mb-0">
                                         Inputkan data yang diperlukan untuk surat tugas asesor pada form dibawah | <code> Nomor Surat Tugas Otomatis Terisi!</code>
                                     </p>
+                                    <a href="{{ route('surat-tugas-asesor.view') }}" class="btn btn-sm btn-dark mt-2">List Surat Tugas</a>
                                 </div>
                                     <div class="card-body">
                                         <div class="row">

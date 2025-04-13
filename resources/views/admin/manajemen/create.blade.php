@@ -1,14 +1,9 @@
 @extends('admin.layouts.master')
 @section('css_page')
-    <!-- Daterangepicker css -->
     <link rel="stylesheet" href="{{ asset('velonic_admin') }}/assets/vendor/daterangepicker/daterangepicker.css">
-    <!-- Vector Map css -->
     <link rel="stylesheet" href="{{ asset('velonic_admin') }}/assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css">
-    <!-- Theme Config Js -->
     <script src="{{ asset('velonic_admin') }}/assets/js/config.js"></script>
-    <!-- App css -->
     <link href="{{ asset('velonic_admin') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
-    <!-- Icons css -->
     <link href="{{ asset('velonic_admin') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 @endsection
 
@@ -118,7 +113,7 @@
                                         </div>
                                         <div class="justify-content-start row">
                                             <div class="col-3">
-                                                <button type="submit" class="btn btn-info">Save</button>
+                                                <button type="submit" class="btn btn-info" name="btn-save-manajemen">Save</button>
                                             </div>
                                         </div>
                                     </div>

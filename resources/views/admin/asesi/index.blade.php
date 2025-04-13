@@ -29,11 +29,6 @@
         .hoverMenuContainer:hover > .hover-menu{
             display: block;
         }
-
-        /* .hover-menu-container:hover + .hover-menu{
-            display: block;
-            background-color: blue;
-        } */
     </style>
 @endsection
 
@@ -42,7 +37,6 @@
     <!-- Start Content-->
     <div class="container-fluid">
 
-        <!-- start page title -->
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box">
@@ -56,124 +50,272 @@
                 </div>
             </div>
         </div>
-        <!-- end page title -->
 
+        <form action="{{ route('asesiIndex') }}" method="GET">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <label class="form-label">Nama Group Data Asesi</label>
 
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <label class="form-label">Nomor Surat Permohonan</label>
-                        <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
-                            <option data-icon="feather-user" selected readonly disabled>Pilih Surat Permohonan...</option>
-                                @foreach ($suratPermohonan as $permohonanBlanko)
-                                    <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}">{{ $permohonanBlanko->nomor_surat }} | 300</option>
+                            <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="id_group" name="id_group" >
+                                
+                                <option data-icon="feather-user" selected readonly disabled>Pilih Nama Data Asesi...</option>
+                                @foreach ($asesiGroup as $permohonanBlanko)
+                                    <option data-icon="feather-user" value="{{ $permohonanBlanko->id }}"            
+                                        {{ request('id_group') == $permohonanBlanko->id ? 'selected' : '' }} >
+                                        {{ $permohonanBlanko->nama_group_asesi }} --- {{ $permohonanBlanko->asesi_count }} Data
+                                    </option>
                                 @endforeach
-                        </select>
-                        <button type="submit" class="btn btn-sm btn-primary mt-2">Search Data</button>
+
+                            </select>
+
+                            <button type="submit" class="btn btn-sm btn-primary mt-2">Search Data</button>
+                            <a href="{{ route('surat-permohonan-blanko.view') }}" class="btn btn-sm btn-dark mt-2">Buat Surat Permohonan</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
 
         <div class="row">
-
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="header-title">{{ $titlePage }}</h4>
-                        <p class="text-muted mb-0">
-                            Anda Dapat Melakukan Edit atau Menghapus {{ $titlePage }} Berikut 
-                        </p>
-                        <a href="{{ route('asesiCompact') }}">Compact Mode</a> | 
-                        <a href="#">Download Template Excel</a>
+
+                @if (!isset($dataAsesi))
+                    <div class="alert alert-info text-bg-info border-0" role="alert">
+                        <strong>Silahkan search data terlebih dahulu !</strong>
                     </div>
-                    <div class="card-body">
-                        <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>Nama Lengkap Asesi</th>
-                                    <th>Nama Tempat Bekerja</th>
-                                    <th>Alamat Tempat Bekerja</th>
-                                    <th>NIK</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Alamat Tempat Tinggal</th>
-                                    <th>No Telp</th>
-                                    <th>Email</th>
-                                    <th>Pendidikan Terakhir</th>
-                                    <th>Jabatan Pekerjaan</th>
-                                    <th>Skema Sertifikasi</th>
-                                    <th>Rencana Uji Kompetensi</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($dataAsesi as $asesi)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
 
-                                    <td class="hoverMenuContainer">
-                                        {{ $asesi->nama_lengkap }}
 
-                                        <div class="row hover-menu">
-                                            <div class="col">
-                                                Edit |
-                                                {{-- Delete Button --}}
-                                                <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
+                @elseif($dataAsesi->count()=== 0)
+                    <div class="alert alert-info text-bg-info border-0" role="alert">
+                        <strong>Data Masih Kosong - </strong> Silahkan import data asesi terlebih dahulu
+                    </div>
+                @else
 
-                                                    <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
-                                                    <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
-                                                </form>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="header-title">{{ $titlePage }}</h4>
+                            <p class="text-muted mb-0">
+                                Anda Dapat Melakukan Edit atau Menghapus {{ $titlePage }} Berikut
+                            </p>
+
+                            <a href="{{ route('asesiCompact') }}" class="btn btn-sm btn-dark mt-2">Compact Mode</a>
+
+                        </div>
+                        <div class="card-body">
+                            <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>Nama Lengkap Asesi</th>
+                                        <th>Nama Tempat Bekerja</th>
+                                        <th>Alamat Tempat Bekerja</th>
+                                        <th>NIK</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Alamat Tempat Tinggal</th>
+                                        <th>No Telp</th>
+                                        <th>Email</th>
+                                        <th>Pendidikan Terakhir</th>
+                                        <th>Jabatan Pekerjaan</th>
+                                        <th>Skema Sertifikasi</th>
+                                        <th>Rencana Uji Kompetensi</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($dataAsesi as $asesi)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+
+                                        <td class="hoverMenuContainer">
+                                            {{ $asesi->nama_lengkap }}
+
+                                            <div class="row hover-menu">
+                                                <div class="col">
+
+
+                                                    {{-- Edit Button --}}
+                                                    <span type="button" class="d-inline" data-bs-toggle="modal" data-bs-target="#modalAsesi{{ $asesi->id }}">
+                                                        Edit</span>
+                                                    |
+                                                    {{-- Delete Button --}}
+                                                    <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+
+                                                        <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
+                                                        <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
+                                                    </form>
+                                                </div>
                                             </div>
+                                        </td>
+
+                                        <td>{{ $asesi->nama_tempat_bekerja }}</td>
+                                        <td>{{ Str::limit($asesi->alamat, 30) }}</td>
+                                        <td>{{ $asesi->nik }}</td>
+                                        <td>{{ $asesi->tempat_lahir }}</td>
+                                        <td>{{ $asesi->tanggal_lahir }}</td>
+                                        <td>{{ $asesi->jenis_kelamin }}</td>
+                                        <td>{{ $asesi->alamat_tempat_tinggal }}</td>
+                                        <td>{{ $asesi->telp }}</td>
+                                        <td>{{ $asesi->email }}</td>
+                                        <td>{{ $asesi->pendidikan_terakhir }}</td>
+                                        <td>{{ $asesi->jabatan_pekerjaan }}</td>
+                                        <td>{{ $asesi->skema_sertifikasi }}</td>
+                                        <td>{{ $asesi->rencana_uji_kompetensi }}</td>
+
+                                        <td>
+                                            <span type="button" class="d-inline" data-bs-toggle="modal" data-bs-target="#modalAsesi{{ $asesi->id }}">
+                                                Edit
+                                            </span>
+                                            |
+                                            {{-- Delete Button --}}
+                                            <form action="" method="POST" class="d-inline">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+
+                                                <input type="hidden" name="id_asesi" value="{{ $asesi->id }}">
+                                                <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+
+                    {{-- Modal --}}
+                    @foreach ($dataAsesi as $asesi)
+                        <form enctype="multipart/form-data" method="POST" action="{{ route('asesiUpdated', $asesi->id) }}">
+                            @csrf
+                            <div class="modal fade" id="modalAsesi{{ $asesi->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content fs-10">
+                                        <div class="modal-header modal-colored-header bg-info">
+                                            <h4 class="modal-title" id="info-header-modalLabel">Edit {{ $titlePage }} {{ $asesi->nama_lengkap }} </h4>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                    </td>
+                                        <div class="modal-body fs-10">
+                                            {{-- Modal Content --}}
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Nama Asesi</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->nama_lengkap }}" name="nama_lengkap">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Tempat Bekerja</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->nama_tempat_bekerja }}" name="nama_tempat_bekerja">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
 
-                                    <td>{{ $asesi->nama_tempat_bekerja }}</td>
-                                    <td>{{ Str::limit($asesi->alamat, 30) }}</td>
-                                    <td>{{ $asesi->nik }}</td>
-                                    <td>{{ $asesi->tempat_lahir }}</td>
-                                    <td>{{ $asesi->tanggal_lahir }}</td>
-                                    <td>{{ $asesi->jenis_kelamin }}</td>
-                                    <td>{{ $asesi->alamat_tempat_tinggal }}</td>
-                                    <td>{{ $asesi->telp }}</td>
-                                    <td>{{ $asesi->email }}</td>
-                                    <td>{{ $asesi->pendidikan_terakhir }}</td>
-                                    <td>{{ $asesi->jabatan_pekerjaan }}</td>
-                                    <td>{{ $asesi->skema_sertifikasi }}</td>
-                                    <td>{{ $asesi->rencana_uji_kompetensi }}</td>
 
-                                    <td>
-                                        Edit |
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Jenis Kelamin</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->jenis_kelamin }}" name="jenis_kelamin">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">NIK</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->nik }}" name="nik">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Tempat Lahir</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->tempat_lahir }}" name="tempat_lahir">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Tanggal Lahir</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->tanggal_lahir }}" name="tanggal_lahir">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Alamat Tempat Bekerja</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->alamat }}" name="alamat">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Alamat Tempat Tinggal</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->alamat_tempat_tinggal }}" name="alamat_tempat_tinggal">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">No Telp</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->telp }}" name="telp">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Email</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->email }}" name="email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Pendidikan</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->pendidikan_terakhir }}" name="pendidikan_terakhir">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Jabatan Pekerjaan</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->jabatan_pekerjaan }}" name="jabatan_pekerjaan">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Skema Sertifikasi</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->skema_sertifikasi }}" name="skema_sertifikasi">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Rencana Uji Kompetensi</label>
+                                                        <input class="form-control fs-12" type="text" value="{{ $asesi->rencana_uji_kompetensi }}" name="rencana_uji_kompetensi">
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                        {{-- Delete Button --}}
-                                        <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-
-                                            <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
-                                            <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-
-                    </div> <!-- end card body-->
-                </div> <!-- end card -->
-            </div><!-- end col-->
-        </div> <!-- end row-->
-
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Update Data</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    @endforeach
+                    <!-- /* End Modal -->
+                @endif
+            </div>
+        </div>
     </div>
-    <!-- container -->
-
 </div>
+
+
+
+
+
+
+
 
 @endsection
 @section('js_page')
@@ -204,7 +346,7 @@
      <!-- App js -->
      <script src="{{ asset('velonic_admin') }}/assets/js/app.js"></script>
 
-     {{-- Sweet Alert --}}
+     {{-- Sweet Alert Delete --}}
     <script>
         document.addEventListener("click", function (event) {
             if (event.target.classList.contains("deleteButton")) {
@@ -263,6 +405,6 @@
             }
         });
     </script>
-    {{-- /* End Sweet Alert --}}
+    {{-- /* End Sweet Alert Delete--}}
 
 @endsection

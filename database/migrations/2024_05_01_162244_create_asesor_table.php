@@ -14,13 +14,15 @@ class CreateAsesorTable extends Migration
     public function up()
     {
         Schema::create('asesor', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('nama_asesor');
             $table->string('no_reg');
             $table->string('no_npwp')->nullable();
             $table->string('no_telp')->nullable();
             $table->string('alamat')->nullable();
             $table->text('foto_asesor')->nullable();
+            $table->string('status')->nullable();
+            $table->text('portofolio_file')->nullable();
             $table->text('gambar_tanda_tangan')->nullable();
             $table->timestamps();
         });

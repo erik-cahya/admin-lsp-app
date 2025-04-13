@@ -30,7 +30,7 @@ class SuratTugasAsesorController extends Controller
 
         $data['nomor_surat_terakhir'] = SuratTugasModel::latest()->first();
         if ($data['nomor_surat_terakhir'] == null) {
-            $data['nomor_surat_terakhir'] =  ['nomor_surat' => '001/ST-LSP-EHI/2021'];
+            $data['nomor_surat_terakhir'] =  ['nomor_surat' => "001/ST-LSP-EHI/" . date('Y')];
         }
 
         return view('admin.surat.surat-tugas-asesor.index', $data);

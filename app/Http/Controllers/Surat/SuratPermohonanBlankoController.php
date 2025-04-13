@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Surat;
 
 use App\Http\Controllers\Controller;
 use App\Models\SuratPermohonanBlankoModel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -20,7 +21,9 @@ class SuratPermohonanBlankoController extends Controller
     }
 
     public function index(){
+        // $this->data['data_surat'] = SuratPermohonanBlankoModel::withCount('asesi')->orderBy('nomor_surat', 'ASC')->get();
         $this->data['data_surat'] = SuratPermohonanBlankoModel::orderBy('nomor_surat', 'ASC')->get();
+
         return view('admin.surat.surat-permohonan-blanko.index', $this->data);
     }
 
@@ -47,6 +50,11 @@ class SuratPermohonanBlankoController extends Controller
             'id' => Str::random(40),
             'nomor_surat' => $request->nomor_surat,
             'nama_surat' => $namaSurat,
+            'kompeten_anggaran_bnsp' => $request->kompeten_anggaran_bnsp == null ? 0 : $request->kompeten_anggaran_bnsp,
+            'kompeten_anggaran_kementrian' => $request->kompeten_anggaran_kementrian == null ? 0 : $request->kompeten_anggaran_kementrian,
+            'kompeten_anggaran_mandiri' => $request->kompeten_anggaran_mandiri == null ? 0 : $request->kompeten_anggaran_mandiri,
+            'kompeten_rcc' => $request->kompeten_rcc == null ? 0 : $request->kompeten_rcc,
+            'belum_kompeten' => $request->belum_kompeten == null ? 0 : $request->belum_kompeten,
             'tanggal_surat' => Carbon::createFromFormat('d-F-Y', $request->tanggal_surat)->format('Y-m-d'),
         ]);
 
@@ -59,4 +67,20 @@ class SuratPermohonanBlankoController extends Controller
 
         dd($request->all());
     }
+
+    public function generatePdf($id)
+    {
+        $dataSurat = SuratPermohonanBlankoModel::where('id', $id)->withCount('asesi')->first();
+        // dd($dataSurat);
+        $pdf = PDF::loadView('admin.surat.surat-permohonan-blanko.pdf', ['dataSurat' => $dataSurat]);
+
+        return $pdf->stream($dataSurat->nama_surat . '.pdf');
+    }
+
+    public function destroy(Request $request)
+    {
+        SuratPermohonanBlankoModel::destroy($request->id);
+        return response()->json(['message' => 'Data Surat Berhasil Dihapus']);
+    }
+
 }
