@@ -5,7 +5,7 @@ namespace App\Http\Controllers\DataLSP;
 use App\Http\Controllers\Controller;
 use App\Models\AsesiGroupModel;
 use App\Models\AsesorModel;
-use App\Models\DataAsesiModel;
+use App\Models\AsesiDataModel;
 use App\Models\SuratPermohonanBlankoModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,14 +17,14 @@ class AsesiController extends Controller
 
     protected $data;
 
-    public function __construct() 
+    public function __construct()
     {
         $this->data['titlePage'] = 'Data Asesi';
     }
 
     public function compact(){
         $this->data['dataAsesor'] = AsesorModel::get();
-        $this->data['dataAsesi'] = DataAsesiModel::get();
+        $this->data['dataAsesi'] = AsesiDataModel::get();
 
         return view('admin.asesi.compact.index', $this->data);
     }
@@ -37,7 +37,7 @@ class AsesiController extends Controller
         // jika tombol cari diklik
         if($request->has('id_group'))
         {
-            $this->data['dataAsesi'] = DataAsesiModel::where('id_asesi_group', $request->id_group)->get();
+            $this->data['dataAsesi'] = AsesiDataModel::where('id_asesi_group', $request->id_group)->get();
         }
         return view('admin.asesi.index', $this->data);
     }
@@ -46,7 +46,7 @@ class AsesiController extends Controller
     {
         $this->data['countDataError'] = 0;
         $this->data['suratPermohonan'] = SuratPermohonanBlankoModel::get();
-// 
+//
         $this->data['asesiGroup'] = AsesiGroupModel::withCount('asesi')->get();
 
         return view('admin.asesi.import', $this->data);
@@ -65,7 +65,7 @@ class AsesiController extends Controller
             'nama_group_asesi.unique' => 'Nama Data Asesi Ini Sudah Ada.',
         ]);
 
-    
+
         $data = Excel::toArray([], $request->file('file'));
         $rows = $data[0];
         $invalidRows = [];
@@ -95,7 +95,7 @@ class AsesiController extends Controller
         }
 
         // Jika ada baris tidak valid / data error, tampilkan semuanya
-        if (!empty($invalidRows)) 
+        if (!empty($invalidRows))
         {
             $this->data["dataError"] = $invalidRows;
             $this->data['countDataError'] = count($invalidRows);
@@ -143,7 +143,7 @@ class AsesiController extends Controller
 
             if ($exists) {
                 // Get Nomor Surat
-                $idAsesiGroup = DataAsesiModel::where('nik', $nik)->value('id_asesi_group');
+                $idAsesiGroup = AsesiDataModel::where('nik', $nik)->value('id_asesi_group');
                 $namaGroupAsesi = AsesiGroupModel::where('id', $idAsesiGroup)->value('nama_group_asesi');
 
                 $duplicates[] = [
@@ -165,7 +165,7 @@ class AsesiController extends Controller
                 ];
 
             } else {
-                DataAsesiModel::create([
+                AsesiDataModel::create([
                     'id_asesi_group' => $asesiGroup->id,
                     'nama_lengkap' => $nama_lengkap,
                     'nama_tempat_bekerja' => $nama_tempat_bekerja,
@@ -215,7 +215,7 @@ class AsesiController extends Controller
 
     public function asesiDeleted($id)
     {
-        DataAsesiModel::destroy($id);
+        AsesiDataModel::destroy($id);
 
         $flashData = [
             'judul' => 'Delete Success',

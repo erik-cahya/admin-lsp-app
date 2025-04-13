@@ -27,7 +27,7 @@ class AsesiGroupModel extends Model
     protected static function boot()
     {
         parent::boot();
-        
+
         // Set ID ke UUID saat data dibuat
         static::creating(function ($model) {
             $model->id = (string) Str::uuid();
@@ -36,6 +36,6 @@ class AsesiGroupModel extends Model
 
     public function asesi()
     {
-        return $this->hasMany(DataAsesiModel::class, 'id_asesi_group', 'id');
+        return $this->hasMany(AsesiDataModel::class, 'id_asesi_group', 'id');
     }
 }

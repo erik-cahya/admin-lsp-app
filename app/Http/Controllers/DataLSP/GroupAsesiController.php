@@ -4,7 +4,6 @@ namespace App\Http\Controllers\DataLSP;
 
 use App\Http\Controllers\Controller;
 use App\Models\AsesiGroupModel;
-use App\Models\DataAsesiModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
