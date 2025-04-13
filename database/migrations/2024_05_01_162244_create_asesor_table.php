@@ -21,6 +21,8 @@ class CreateAsesorTable extends Migration
             $table->string('no_telp')->nullable();
             $table->string('alamat')->nullable();
             $table->text('foto_asesor')->nullable();
+            $table->string('status')->nullable();
+            $table->text('portofolio_file')->nullable();
             $table->text('gambar_tanda_tangan')->nullable();
             $table->timestamps();
         });
