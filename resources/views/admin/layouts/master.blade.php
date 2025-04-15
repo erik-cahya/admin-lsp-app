@@ -238,13 +238,7 @@
                 </div>
             </div>
         </div>
-
-
         @yield('js_page')
-        {{-- Isotope JS --}}
-        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-
-
         {{-- Sweet Alert / Flash Massage --}}
         <script>
             @if(session('flashData'))
@@ -259,6 +253,8 @@
             @endif
         </script>
         {{-- /* End Sweet Alert / Flash Massage --}}
+
+        {{-- Javascript Jam --}}
         <script>
             function updateTime() {
                 const sekarang = new Date();

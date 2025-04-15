@@ -1,7 +1,5 @@
 @extends('admin.layouts.master')
 @section('css_page')
-    <link rel="stylesheet" href="{{ asset('velonic_admin') }}/assets/vendor/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="{{ asset('velonic_admin') }}/assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css">
     <link href="{{ asset('velonic_admin') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
     <link href="{{ asset('velonic_admin') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <script src="{{ asset('velonic_admin') }}/assets/js/config.js"></script>
@@ -83,22 +81,6 @@
 </div>
 @endsection
 @section('js_page')
-     <!-- Vendor js -->
      <script src="{{ asset('velonic_admin') }}/assets/js/vendor.min.js"></script>
-     <!-- Daterangepicker js -->
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/daterangepicker/moment.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/daterangepicker/daterangepicker.js"></script>
-
-     <!-- Apex Charts js -->
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/apexcharts/apexcharts.min.js"></script>
-
-     <!-- Vector Map js -->
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
-
-     <!-- Dashboard App js -->
-     <script src="{{ asset('velonic_admin') }}/assets/js/pages/dashboard.js"></script>
-     <!-- App js -->
      <script src="{{ asset('velonic_admin') }}/assets/js/app.min.js"></script>
-
 @endsection

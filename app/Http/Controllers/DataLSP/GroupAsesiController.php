@@ -9,7 +9,19 @@ use Illuminate\Support\Facades\DB;
 
 class GroupAsesiController extends Controller
 {
-    //
+    public function store(Request $request){
+        AsesiGroupModel::create([
+            'nama_group_asesi' => $request->nama_group,
+        ]);
+
+        $flashData = [
+            'judul' => 'Success',
+            'pesan' => 'Group Asesi Berhasil Ditambahkan',
+            'swalFlashIcon' => 'success',
+        ];
+        return back()->with('flashData', $flashData);
+
+    }
 
     public function destroy(Request $request, $id){
         DB::table('asesi_data')->where('id_asesi_group', $id)->delete();

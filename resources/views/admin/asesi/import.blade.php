@@ -254,7 +254,7 @@
 </div>
 
 {{-- Add Modal Group Asesi --}}
-<form enctype="multipart/form-data" method="POST" action="/skema">
+<form enctype="multipart/form-data" method="POST" action="{{ route('groupAsesiStore') }}">
     @csrf
     <div class="modal fade" id="add.modalSkema" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog-centered">

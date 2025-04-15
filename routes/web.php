@@ -111,6 +111,7 @@ Route::middleware(['auth'])->group(function () {
 
     // ############################################################ Group Asesi
     Route::delete('/asesiGroupDeleted/{id}', [GroupAsesiController::class, 'destroy'])->name('groupAsesiDelete');
+    Route::post('/asesi/store', [GroupAsesiController::class, 'store'])->name('groupAsesiStore');
 
 
      // ############################################################ Blanko
