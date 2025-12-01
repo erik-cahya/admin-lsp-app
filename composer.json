@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "alessiodh/deepltranslator": "^1.0",
         "barryvdh/laravel-dompdf": "^2.1",
         "endroid/qr-code": "^5.0",
         "fruitcake/laravel-cors": "^2.0",

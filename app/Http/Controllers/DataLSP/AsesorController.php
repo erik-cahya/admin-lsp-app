@@ -19,21 +19,32 @@ class AsesorController extends Controller
         $this->data['titlePage'] = 'Data Asesor';
     }
 
+    // API
+    public function getDataAPI()
+    {
+        $data = AsesorModel::get();
+        return response()->json($data);
+    }
+
     // function get Foto Asesor
-    public function getFotoAsesor($id){
+    public function getFotoAsesor($id)
+    {
         return AsesorModel::where('id', $id)->first()->foto_asesor;
     }
     // function get Tanda Tangan
-    public function getTandaTangan($id){
+    public function getTandaTangan($id)
+    {
         return AsesorModel::where('id', $id)->first()->gambar_tanda_tangan;
     }
 
     //function get Portofolio
-    public function getPortofolio($id){
+    public function getPortofolio($id)
+    {
         return AsesorModel::where('id', $id)->first()->portolio_file;
     }
 
-    public function compact(){
+    public function compact()
+    {
 
         $this->data['dataAsesor'] = AsesorModel::get();
         return view('admin.asesor.compact.index', $this->data);
@@ -156,12 +167,12 @@ class AsesorController extends Controller
             $request->gambar_tanda_tangan->move(public_path('img/gambar_tanda_tangan'), $gambarTandaTangan);
         }
 
-         // Portofolio Upload
+        // Portofolio Upload
         if ($request->portofolio_file === null) {
             $portofolio = $this->getPortofolio($id);
         } else {
             File::delete(public_path('files/portofolio/' . $this->getPortofolio($id)));
-            $portofolio = 'portofolio_' .$request->nama_asesor.'.'.$request->portofolio_file->extension();
+            $portofolio = 'portofolio_' . $request->nama_asesor . '.' . $request->portofolio_file->extension();
             Storage::disk('portofolio')->put($portofolio, File::get($request->portofolio_file));
         }
 

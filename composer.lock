@@ -4,8 +4,60 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3eec96314fa203ad176d29ae3ab0cbf9",
+    "content-hash": "04796f805c00cab157e1d7b1c0c3cf65",
     "packages": [
+        {
+            "name": "alessiodh/deepltranslator",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Alessio-dh/deepltranslator.git",
+                "reference": "00d7cd80b1228c38f921bc4cc92c8623f8e40f37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Alessio-dh/deepltranslator/zipball/00d7cd80b1228c38f921bc4cc92c8623f8e40f37",
+                "reference": "00d7cd80b1228c38f921bc4cc92c8623f8e40f37",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.3"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Alessiodh\\Deepltranslator\\DeeplTranslatorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Alessiodh\\Deepltranslator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Alessio De Houwer",
+                    "email": "alessio.dh@hotmail.com"
+                }
+            ],
+            "description": "Will translate all files inside a laravel project using the DeepL API and exports it to the requested language",
+            "support": {
+                "issues": "https://github.com/Alessio-dh/deepltranslator/issues",
+                "source": "https://github.com/Alessio-dh/deepltranslator/tree/v1.0.3"
+            },
+            "time": "2021-06-20T08:41:38+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.2.0",

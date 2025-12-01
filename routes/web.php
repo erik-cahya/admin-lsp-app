@@ -92,38 +92,34 @@ Route::middleware(['auth'])->group(function () {
 
 
     // ############################################################ Skema
-    Route::resource('/skema', SkemaController::class)->except('show','edit', 'create');
+    Route::resource('/skema', SkemaController::class)->except('show', 'edit', 'create');
 
 
 
-     // ############################################################ Asesi
+    // ############################################################ Asesi
     //  Route::resource('/asesi', AsesiController::class);
-     Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
-     Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
+    Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
+    Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
 
-     Route::get('/asesi/import', [AsesiController::class, 'importDataAsesi'])->name('asesiAdd');
-     Route::post('/asesi/import', [AsesiController::class, 'importExcel'])->name('asesiAdded');
+    Route::get('/asesi/import', [AsesiController::class, 'importDataAsesi'])->name('asesiAdd');
+    Route::post('/asesi/import', [AsesiController::class, 'importExcel'])->name('asesiAdded');
 
-     Route::post('/asesiUpdate/{id}', [AsesiController::class, 'asesiUpdate'])->name('asesiUpdated');
+    Route::post('/asesiUpdate/{id}', [AsesiController::class, 'asesiUpdate'])->name('asesiUpdated');
 
 
-     Route::delete('/asesiDeleted/{id}', [AsesiController::class, 'asesiDeleted'])->name('asesiDeleted');
+    Route::delete('/asesiDeleted/{id}', [AsesiController::class, 'asesiDeleted'])->name('asesiDeleted');
 
     // ############################################################ Group Asesi
     Route::delete('/asesiGroupDeleted/{id}', [GroupAsesiController::class, 'destroy'])->name('groupAsesiDelete');
     Route::post('/asesi/store', [GroupAsesiController::class, 'store'])->name('groupAsesiStore');
 
 
-     // ############################################################ Blanko
-     Route::get('/suratPermohonanBlanko', [SuratPermohonanBlankoController::class, 'index'] )->name('surat-permohonan-blanko.view');
-     Route::get('/suratPermohonanBlanko/create', [SuratPermohonanBlankoController::class, 'create'] )->name('surat-permohonan-blanko.create');
-     Route::post('/suratPermohonanBlanko/store', [SuratPermohonanBlankoController::class, 'store'] )->name('surat-permohonan-blanko.store');
+    // ############################################################ Blanko
+    Route::get('/suratPermohonanBlanko', [SuratPermohonanBlankoController::class, 'index'])->name('surat-permohonan-blanko.view');
+    Route::get('/suratPermohonanBlanko/create', [SuratPermohonanBlankoController::class, 'create'])->name('surat-permohonan-blanko.create');
+    Route::post('/suratPermohonanBlanko/store', [SuratPermohonanBlankoController::class, 'store'])->name('surat-permohonan-blanko.store');
 
-     Route::delete('/suratPermohonanBlanko/destroy/{id}', [SuratPermohonanBlankoController::class, 'destroy'] )->name('surat-permohonan-blanko.delete');
+    Route::delete('/suratPermohonanBlanko/destroy/{id}', [SuratPermohonanBlankoController::class, 'destroy'])->name('surat-permohonan-blanko.delete');
 
-     Route::get('/suratPermohonanBlanko/generate-pdf/{id}', [SuratPermohonanBlankoController::class, 'generatePdf'])->name('surat-permohonan-blanko.generatePdf');
-
-
-
+    Route::get('/suratPermohonanBlanko/generate-pdf/{id}', [SuratPermohonanBlankoController::class, 'generatePdf'])->name('surat-permohonan-blanko.generatePdf');
 });
-
