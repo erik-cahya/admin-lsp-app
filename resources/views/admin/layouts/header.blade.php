@@ -8,20 +8,20 @@
                 <!-- Logo light -->
                 <a href="index.html" class="logo-light">
                     <span class="logo-lg">
-                        <img src="{{ asset('velonic_admin') }}/assets/images/logo.png" alt="logo">
+                        <img src="{{ asset('img/no_title_logo.png') }}" alt="logo">
                     </span>
                     <span class="logo-sm">
-                        <img src="{{ asset('velonic_admin') }}/assets/images/logo-sm.png" alt="small logo">
+                        <img src="{{ asset('img/no_title_logo.png') }}" alt="small logo">
                     </span>
                 </a>
 
                 <!-- Logo Dark -->
                 <a href="index.html" class="logo-dark">
                     <span class="logo-lg">
-                        <img src="{{ asset('velonic_admin') }}/assets/images/logo-dark.png" alt="dark logo">
+                        <img src="{{ asset('img/no_title_logo.png') }}" alt="dark logo">
                     </span>
                     <span class="logo-sm">
-                        <img src="{{ asset('velonic_admin') }}/assets/images/logo-sm.png" alt="small logo">
+                        <img src="{{ asset('img/no_title_logo.png') }}" alt="small logo">
                     </span>
                 </a>
             </div>
@@ -67,7 +67,7 @@
 
             <div class="badge bg-success" id="waktu"></div>
 
-            <li class="dropdown notification-list">
+            {{-- <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
                     <i class="ri-notification-3-line fs-22"></i>
@@ -156,13 +156,13 @@
                     </a>
 
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="d-none d-sm-inline-block">
+            {{-- <li class="d-none d-sm-inline-block">
                 <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
                     <i class="ri-settings-3-line fs-22"></i>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="d-none d-sm-inline-block">
                 <div class="nav-link" id="light-dark-mode">
@@ -174,7 +174,7 @@
                 <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
                     <span class="account-user-avatar">
-                        <img src="{{ asset('velonic_admin') }}/assets/images/users/avatar-1.jpg" alt="user-image" width="32" class="rounded-circle">
+                        <img src="{{ asset('img/no_title_logo.png') }}" alt="user-image" width="32" class="rounded-circle">
                     </span>
                     <span class="d-lg-block d-none">
                         <h5 class="my-0 fw-normal">{{ Auth::user()->name }} <i
@@ -184,20 +184,20 @@
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
                     <!-- item-->
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
+                        <h6 class="text-overflow m-0">Welcome!</h6>
                     </div>
 
                     <!-- item-->
-                    <a href="pages-profile.html" class="dropdown-item">
+                    {{-- <a href="pages-profile.html" class="dropdown-item">
                         <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
                         <span>My Account</span>
-                    </a>
+                    </a> --}}
 
                     <!-- item-->
-                    <a class="dropdown-item" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
+                    {{-- <a class="dropdown-item" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
                         <i class="ri-settings-4-line fs-18 align-middle me-1"></i>
                         <span>Settings</span>
-                    </a>
+                    </a> --}}
 
 
                     <!-- item-->
