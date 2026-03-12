@@ -86,11 +86,12 @@
                                         <div class="d-flex align-items-start justify-content-between">
                                             <div class="d-flex">
                                                 <a class="me-2" href="#" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
-                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ $asesor->foto_asesor == null ? asset('img/no-pic.png') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" alt="">
+                                                    <img class="avatar-md rounded-circle object-fit-cover" src="{{ $asesor->foto_asesor == null ? asset('img/no-pic.png') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" alt="">
                                                 </a>
                                                 <div class="info">
                                                     <span class="fw-bold">{{ $asesor->nama_asesor }}</span>
 
+                                                    <!--
                                                     <div class="row hover-menu">
                                                         <div class="col">
 
@@ -120,6 +121,7 @@
 
                                                         </div>
                                                     </div>
+                                                    -->
                                                 </div>
                                             </div>
                                         </div>
@@ -137,7 +139,7 @@
                                                 <a class="d-block"  target="_blank href="{{ asset('img/foto_asesor/' . $asesor->foto_asesor) }}" download="{{ $asesor->foto_asesor }}">Download Profile</a>
                                         @endif
 
-                                        {{-- Download Foto Profile --}}
+                                        {{-- Download Tanda Tangan --}}
                                         @if ($asesor->gambar_tanda_tangan == null)
                                                 <span class="text-muted d-block">Tidak ada Tanda Tangan</span>
                                             @else
