@@ -43,11 +43,48 @@
 
 <body>
 
+    <table class="header-table">
+        <tr mb-5>
+            <td width="15%" class="center">
+                <img src="{{ asset('img/no_title_logo.png') }}" width="80px;">
+            </td>
+            <td width="75%" class="center">
+                <div class="title">
+                    Lembaga Sertifikasi Profesi
+                    <br>
+                    <strong>Engineering Hospitality Indonesia</strong>
+                    <br>
+                    (LSP EHI)
+                    <br>
+                    Perumahan Taman Mahayu III/No.44, Sempidi, Mengwi, Badung, Bali
+                    <br>
+                    Web <a href="https://www.lsp-eh.com" target="_blank">www.lsp-eh.com</a>, email : info@lsp-eh.com
+                </div>
+            </td>
+        </tr>
+    </table>
+
     <div class="center">
-        <img src="https://lsp-eh.com/wp-content/uploads/2024/04/kop_surat.jpg" width="700px">
+        {{-- <img src="https://lsp-eh.com/wp-content/uploads/2024/04/kop_surat.jpg" width="700px"> --}}
+        <p>
+            Lembaga Sertifikasi Profesi
+            <br>
+            <strong>Engineering Hospitality Indonesia</strong>
+            <br>
+            (LSP EHI)
+            <br>
+            Perumahan Taman Mahayu III/No.44, Sempidi, Mengwi, Badung, Bali
+            <br>
+            Web <a href="https://www.lsp-eh.com" target="_blank">www.lsp-eh.com</a>, email : info@lsp-eh.com
+        </p>
+        {{-- <h2><strong>Engineering Hospitality Indonesia</strong></h2>
+        <h4>(LSP EHI)</h4>
+        <h5>Perumahan Taman Mahayu III/No.44, Sempidi, Mengwi, Badung, Bali</h5>
+        <h5>Web <a href="https://www.lsp-eh.com" target="_blank">www.lsp-eh.com</a>, Email : info@lsp-eh.com</h5> --}}
+        <hr>
     </div>
 
-    <h2 style="text-align: center; text-decoration: underline; font-size: 20px">Surat Tugas</h2>
+    <h2 style="text-align: center; text-decoration: underline; font-size: 20px">SURAT TUGAS</h2>
     <h3 style="text-align: center; font-size: 14px">No. {{ $dataSurat->nomor_surat }}</h3>
 
     <p>Yang bertanda tangan dibawah ini :</p>
@@ -66,7 +103,7 @@
         <tr>
             <td width="100px">Alamat</td>
             <td>:</td>
-            <td>Jalan Raya Sading No.37, Sading, Kec. Mengwi, Badung – Bali</td>
+            <td>Perumahan Taman Mahayu III/No.44, Sempidi, Mengwi, Badung, Bali</td>
         </tr>
     </table>
 

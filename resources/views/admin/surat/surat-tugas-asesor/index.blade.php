@@ -111,7 +111,7 @@
 
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item" href="{{ route('surat-tugas-asesor.generatePdf', $dt_surat->id) }}" target="_blank"><i class="ri-file-pdf-fill"></i> Download PDF</a>
-                                                        <a class="dropdown-item" href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}"><i class="ri-file-word-fill"></i> Download DOC</a>
+                                                        {{-- <a class="dropdown-item" href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}"><i class="ri-file-word-fill"></i> Download DOC</a> --}}
 
                                                         {{-- Edit Button --}}
                                                         <form action="{{ route('surat-tugas-asesor.edit', $dt_surat->id) }}" method="POST">
