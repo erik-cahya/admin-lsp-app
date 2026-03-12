@@ -45,11 +45,11 @@ Route::middleware(['guest'])->group(function () {
 // });
 
 Route::get('inputasesor', [DevController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 // Middleware Login
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/logs', [LogController::class, 'index']);
 

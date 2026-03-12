@@ -74,6 +74,7 @@ class SuratTugasAsesorController extends Controller
 
     public function store(Request $request)
     {
+        // dd(Str::uuid());
         // dd($request->all());
         $tanggalUjiFormatted = Carbon::createFromFormat('d-F-Y', $request->tanggal_uji)->locale('id')->translatedFormat('d F Y');
 
@@ -94,7 +95,7 @@ class SuratTugasAsesorController extends Controller
         $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . $tanggalUjiFormatted;
 
         SuratTugasModel::create([
-            'id' => Str::random(40),
+            // 'id' => Str::uuid(),
             'nama_surat' => $fileName,
             'nomor_surat' => $request->nomor_surat,
             'nama_asesor' => $request->nama_asesor,

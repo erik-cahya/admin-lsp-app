@@ -14,13 +14,18 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
+
+
 class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+        // dd(Auth::user());
         $data['countManajemen'] = ManajemenModel::count();
+
         $data['countAsesi'] = AsesiDataModel::count();
         $data['countAsesor'] = AsesorModel::count();
+        // dd($data['countAsesor']);
         $data['countTUK'] = TUKModel::count();
         $data['countSkema'] = SkemaModel::count();
         return view('admin.dashboard.index', $data);

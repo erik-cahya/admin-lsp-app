@@ -1,0 +1,1 @@
+[19-Jan-2026 02:25:57 Asia/Makassar] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Auth as Auth because the name is already in use in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Http/Controllers/DashboardController.php on line 15
