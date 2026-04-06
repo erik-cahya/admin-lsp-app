@@ -45,11 +45,11 @@
 
     <table class="header-table">
         <tr mb-5>
-            <td width="15%" class="center">
-                <img src="{{ asset('img/no_title_logo.png') }}" width="80px;">
+            <td width="5%" class="left">
+                 <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('img/no_title_logo.png'))) }}" width="80px;">
             </td>
-            <td width="75%" class="center">
-                <div class="title">
+            <td width="95%" class="center" style="margin-left:-20px;">
+                <div>
                     Lembaga Sertifikasi Profesi
                     <br>
                     <strong>Engineering Hospitality Indonesia</strong>
@@ -63,29 +63,10 @@
             </td>
         </tr>
     </table>
-
-    <div class="center">
-        {{-- <img src="https://lsp-eh.com/wp-content/uploads/2024/04/kop_surat.jpg" width="700px"> --}}
-        <p>
-            Lembaga Sertifikasi Profesi
-            <br>
-            <strong>Engineering Hospitality Indonesia</strong>
-            <br>
-            (LSP EHI)
-            <br>
-            Perumahan Taman Mahayu III/No.44, Sempidi, Mengwi, Badung, Bali
-            <br>
-            Web <a href="https://www.lsp-eh.com" target="_blank">www.lsp-eh.com</a>, email : info@lsp-eh.com
-        </p>
-        {{-- <h2><strong>Engineering Hospitality Indonesia</strong></h2>
-        <h4>(LSP EHI)</h4>
-        <h5>Perumahan Taman Mahayu III/No.44, Sempidi, Mengwi, Badung, Bali</h5>
-        <h5>Web <a href="https://www.lsp-eh.com" target="_blank">www.lsp-eh.com</a>, Email : info@lsp-eh.com</h5> --}}
-        <hr>
-    </div>
+    <hr>
 
     <h2 style="text-align: center; text-decoration: underline; font-size: 20px">SURAT TUGAS</h2>
-    <h3 style="text-align: center; font-size: 14px">No. {{ $dataSurat->nomor_surat }}</h3>
+    <h3 style="text-align: center; font-size: 14px; margin-top:-15px;">No. {{ $dataSurat->nomor_surat }}</h3>
 
     <p>Yang bertanda tangan dibawah ini :</p>
 
@@ -154,17 +135,20 @@
     <p>Demikian surat tugas ini diberikan untuk dilaksanakan dengan penuh tanggung jawab.</p>
 
     <div class="signature_area">
-        <p>Mangupura,
+        <p>
+            Mangupura,
             {{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_surat)->locale('id')->isoFormat(' DD MMMM YYYY') }}
+            <br>
+            LSP Engineering Hospitality Indonesia
+            <br>
+            <br>
+            <img src="https://lsp-eh.com/wp-content/uploads/2024/04/cap_ttd_direktur.jpg" width="150px">
+            <br>
+            <br>
+<strong><u>Drs. I Gusti Nyoman Wiantara, M.M</u></strong>
+<br>
+Direktur
         </p>
-        <p>LSP Engineering Hospitality Indonesia</p>
-        <img src="https://lsp-eh.com/wp-content/uploads/2024/04/cap_ttd_direktur.jpg" width="150px">
-
-
-        <div class="direktur_name">
-            <h3 style="text-decoration: underline">Drs. I Gusti Nyoman Wiantara, M.M</h3>
-            <p>Direktur</p>
-        </div>
     </div>
 </body>
 
