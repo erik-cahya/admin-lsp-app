@@ -21,12 +21,12 @@ use Illuminate\Support\Facades\DB;
 class SuratTugasAsesorController extends Controller
 {
     public function compact(){
-        $data['data_surat'] = SuratTugasModel::orderBy('nomor_surat', 'ASC')->get();
+        $data['data_surat'] = SuratTugasModel::orderBy('created_at', 'desc')->get();
         return view('admin.surat.surat-tugas-asesor.compact.index', $data);
     }
     public function index()
     {
-        $data['data_surat'] = SuratTugasModel::orderBy('nomor_surat', 'ASC')->get();
+        $data['data_surat'] = SuratTugasModel::orderBy('created_at', 'desc')->get();
 
         $data['nomor_surat_terakhir'] = SuratTugasModel::latest()->first();
         if ($data['nomor_surat_terakhir'] == null) {
@@ -190,7 +190,7 @@ class SuratTugasAsesorController extends Controller
         $dataSurat = SuratTugasModel::where('id', $id)->first();
         $pdf = PDF::loadView('admin.surat.surat-tugas-asesor.pdf', ['dataSurat' => $dataSurat]);
 
-        return $pdf->download($dataSurat->nama_surat . '.pdf');
+        return $pdf->stream($dataSurat->nama_surat . '.pdf');
     }
 
     public function get_data_tuk($id)

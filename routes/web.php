@@ -122,4 +122,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/suratPermohonanBlanko/destroy/{id}', [SuratPermohonanBlankoController::class, 'destroy'])->name('surat-permohonan-blanko.delete');
 
     Route::get('/suratPermohonanBlanko/generate-pdf/{id}', [SuratPermohonanBlankoController::class, 'generatePdf'])->name('surat-permohonan-blanko.generatePdf');
+
+    // ############################################################ Surat Permohonan Blanko Edit
+    Route::get('/suratPermohonanBlanko/edit/{id}', [SuratPermohonanBlankoController::class, 'edit'])->name('surat-permohonan-blanko.edit');
+    Route::post('/suratPermohonanBlanko/update/{id}', [SuratPermohonanBlankoController::class, 'update'])->name('surat-permohonan-blanko.update');
 });

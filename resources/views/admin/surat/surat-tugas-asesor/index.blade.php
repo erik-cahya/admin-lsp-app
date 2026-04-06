@@ -55,7 +55,7 @@
                     </div>
                     <div class="card-body">
 
-                        <table id="scroll-horizontal-datatable" class="table table-striped w-100 nowrap">
+                        <table id="scroll-horizontal-datatable " class="table table-striped w-100 nowrap">
                             <thead>
                                 <tr>
                                     <th>No Surat</th>
@@ -74,9 +74,9 @@
                                         <td>
                                             <div class="d-flex align-items-start justify-content-between">
                                                 <div class="d-flex">
-                                                    <a class="me-2" href="#">
-                                                        <img class="avatar-sm rounded-circle bx-s" src="{{ asset('velonic_admin') }}/assets/images/users/avatar-2.jpg" alt="">
-                                                    </a>
+                                                    {{-- <a class="me-2" href="#">
+                                                        <img class="avatar-sm rounded-circle bx-s" src="{{ $dt_surat->foto_asesor == null ? asset('img/no-pic.png') : asset('img/foto_asesor/' . $dt_surat->foto_asesor)  }}"  alt="">
+                                                    </a> --}}
                                                     <div class="info">
                                                         <h5 class="fs-14 my-1">{{ $dt_surat->nama_asesor }}</h5>
                                                         <p class="text-muted fs-12">{{ $dt_surat->no_reg }}</p>
@@ -87,9 +87,9 @@
                                         <td>
                                             <div class="d-flex align-items-start justify-content-between">
                                                 <div class="d-flex">
-                                                    <a class="social-list-item bg-dark-subtle text-secondary fs-16 border-0 me-2" title="" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Facebook">
+                                                    {{-- <a class="social-list-item bg-dark-subtle text-secondary fs-16 border-0 me-2" title="" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Facebook">
                                                         <i class="ri-building-line"></i>
-                                                    </a>
+                                                    </a> --}}
                                                     <div class="info">
                                                         <h5 class="fs-14 my-1">{{ $dt_surat->nama_tuk }}</h5>
                                                         <p class="text-muted fs-12">{{ Str::limit($dt_surat->alamat_tuk, 50) }}</p>
